@@ -30,9 +30,16 @@ const navigation = [
 ]
 
 const stats = [
-  { label: 'Bilhão em vendas', value: '+1Bi' },
-  { label: 'Um ROI de', value: '9x' },
-  { label: 'Aumento de faturamento', value: '20%' },
+  { label: 'Bilhão em vendas', value: '+1Bi', description: 'processadas' },
+  { label: 'Um ROI de', value: '9x', description: 'retorno médio' },
+  { label: 'Aumento de faturamento', value: '20%', description: 'em média' },
+]
+
+const bigNumbers = [
+  { number: '2000+', label: 'Empresas', description: 'confiam na Estimulus', icon: '🏢' },
+  { number: '1Bi+', label: 'Vendas', description: 'processadas', icon: '💰' },
+  { number: '9x', label: 'ROI', description: 'retorno médio', icon: '📈' },
+  { number: '24/7', label: 'Suporte', description: 'sempre disponível', icon: '💬' },
 ]
 
 const services = [
@@ -112,6 +119,13 @@ const integrations = [
   { name: 'VTEX', logo: 'vtex' },
   { name: 'Tray', logo: 'tray' },
   { name: 'NuvemShop', logo: 'nuvemshop' },
+]
+
+const partners = [
+  { name: 'Hostinger', percentage: 100 },
+  { name: 'Uso de AI', percentage: 100 },
+  { name: 'Webhosting', percentage: 100 },
+  { name: 'Projetos', percentage: 100 },
 ]
 
 const faqs = [
@@ -276,7 +290,7 @@ export default function HomePage() {
           </div>
           <div className="mx-auto max-w-7xl px-6 pt-10 sm:pb-32 lg:px-8 lg:pt-20">
             <div className="mx-auto max-w-3xl text-center animate-fade-in">
-              <h1 className="text-pretty text-5xl font-bold tracking-tight text-gray-900 sm:text-7xl lg:text-8xl">
+              <h1 className="text-pretty text-5xl font-black tracking-tight text-gray-900 sm:text-7xl lg:text-8xl">
                 Escolha a <span className="text-gradient">fidelização</span> de clientes e lucre mais
               </h1>
               <p className="mt-8 text-xl/8 text-gray-600 sm:text-2xl">
@@ -311,8 +325,33 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Stats section */}
+        {/* Big Numbers Section - Inspirado no Riscamundo */}
         <div id="resultados" className="relative mx-auto -mt-20 max-w-7xl px-6 sm:mt-0 lg:px-8">
+          <div className="absolute inset-0 pattern-dots opacity-30" />
+          <div className="relative mx-auto max-w-6xl">
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+              {bigNumbers.map((item, index) => (
+                <div 
+                  key={item.label} 
+                  className="group relative glass rounded-3xl p-8 text-center card-hover border border-white/20 shadow-card glow-effect overflow-hidden"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl" />
+                  <div className="relative z-10">
+                    <div className="text-5xl mb-3 animate-float" style={{ animationDelay: `${index * 0.2}s` }}>{item.icon}</div>
+                    <div className="number-highlight mb-2">{item.number}</div>
+                    <dt className="text-lg font-bold text-gray-900 mb-1">{item.label}</dt>
+                    <dd className="text-sm text-gray-600">{item.description}</dd>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Stats section tradicional */}
+        <div className="relative mx-auto mt-16 max-w-7xl px-6 lg:px-8">
+          <div className="section-divider" />
           <div className="relative mx-auto max-w-6xl">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
               {stats.map((stat, index) => (
@@ -324,7 +363,8 @@ export default function HomePage() {
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="relative">
                     <dd className="text-6xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">{stat.value}</dd>
-                    <dt className="text-base font-medium text-gray-700">{stat.label}</dt>
+                    <dt className="text-base font-medium text-gray-700 mb-1">{stat.label}</dt>
+                    <dd className="text-sm text-gray-500">{stat.description}</dd>
                   </div>
                 </div>
               ))}
@@ -335,8 +375,9 @@ export default function HomePage() {
         {/* Services section */}
         <div id="servicos" className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
           <div className="absolute inset-0 gradient-mesh opacity-50" />
+          <div className="section-divider" />
           <div className="relative mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            <h2 className="text-pretty text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               Transforme seu negócio em um <span className="text-gradient">ímã de clientes</span>
             </h2>
             <p className="mt-6 text-lg/8 text-gray-600 sm:text-xl">
@@ -369,7 +410,7 @@ export default function HomePage() {
         {/* Apps section */}
         <div className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            <h2 className="text-pretty text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               Aplicativos para você e seus <span className="text-gradient">clientes</span>
             </h2>
           </div>
@@ -397,7 +438,7 @@ export default function HomePage() {
         <div className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
           <div className="absolute inset-0 gradient-mesh opacity-30" />
           <div className="relative mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            <h2 className="text-pretty text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               Um sistema de cashback <span className="text-gradient">simples e eficaz</span>
             </h2>
             <p className="mt-6 text-xl text-gray-600 font-medium">
@@ -446,11 +487,38 @@ export default function HomePage() {
           </div>
         </div>
 
+        {/* Partners Section - Inspirado no Riscamundo */}
+        <div className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+          <div className="absolute inset-0 pattern-grid opacity-20" />
+          <div className="relative mx-auto max-w-4xl">
+            <h2 className="text-pretty text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center mb-12">
+              <span className="text-gradient">PARCEIROS</span>
+            </h2>
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+              {partners.map((partner, index) => (
+                <div 
+                  key={partner.name}
+                  className="group relative glass rounded-2xl p-6 text-center card-hover border border-white/20 shadow-card overflow-hidden"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative z-10">
+                    <div className="text-4xl font-black text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text mb-2">
+                      {partner.percentage}%
+                    </div>
+                    <div className="text-sm font-semibold text-gray-700">{partner.name}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Integrations section */}
         <div id="integracoes" className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
           <div className="absolute inset-0 gradient-mesh opacity-20" />
           <div className="relative mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl text-center">
+            <h2 className="text-pretty text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl text-center">
               Em sincronia com as <span className="text-gradient">ferramentas</span> que você já usa
             </h2>
             <p className="mt-6 text-xl text-gray-600 text-center">
@@ -461,7 +529,7 @@ export default function HomePage() {
             {integrations.map((integration, index) => (
               <div 
                 key={integration.name} 
-                className="group glass rounded-xl p-6 card-hover border border-white/20 shadow-card flex items-center justify-center h-20"
+                className="group glass rounded-xl p-6 card-hover border border-white/20 shadow-card flex items-center justify-center h-20 magnetic-hover"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <span className="text-sm font-semibold text-gray-700 group-hover:text-indigo-600 transition-colors">{integration.name}</span>
@@ -474,7 +542,7 @@ export default function HomePage() {
         <div id="sobre" className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
           <div className="absolute inset-0 gradient-mesh opacity-30" />
           <div className="relative mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            <h2 className="text-pretty text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               Apoio total em <span className="text-gradient">cada etapa</span>
             </h2>
             <p className="mt-6 text-xl text-gray-600">
@@ -504,7 +572,7 @@ export default function HomePage() {
         <div className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
           <div className="absolute inset-0 gradient-mesh opacity-30" />
           <div className="relative mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            <h2 className="text-pretty text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               Mais de <span className="text-gradient">2000 empresas</span> confiam na Estimulus
             </h2>
           </div>
@@ -533,7 +601,7 @@ export default function HomePage() {
         <div className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
           <div className="absolute inset-0 gradient-mesh opacity-20" />
           <div className="relative mx-auto max-w-3xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl text-center mb-4">
+            <h2 className="text-pretty text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl text-center mb-4">
               Perguntas <span className="text-gradient">frequentes</span>
             </h2>
             <p className="text-center text-lg text-gray-600 mb-12">
@@ -579,7 +647,7 @@ export default function HomePage() {
             />
           </div>
           <div className="relative mx-auto max-w-3xl text-center">
-            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            <h2 className="text-pretty text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               Faça parte da <span className="text-gradient">revolução Estimulus</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-xl text-gray-600">
