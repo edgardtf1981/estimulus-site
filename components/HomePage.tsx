@@ -21,11 +21,9 @@ import Image from 'next/image'
 
 const navigation = [
   { name: 'Início', href: '#inicio' },
-  { name: 'Por que a Estimulus', href: '#porque' },
+  { name: 'Calculadoras', href: '#calculadoras' },
   { name: 'Serviços', href: '#servicos' },
-  { name: 'Integrações', href: '#integracoes' },
-  { name: 'Sobre', href: '#sobre' },
-  { name: 'Resultados', href: '#resultados' },
+  { name: 'Raio-X', href: '#raio-x' },
   { name: 'Blog', href: '#blog' },
 ]
 
@@ -75,22 +73,31 @@ const apps = [
   },
 ]
 
-const processSteps = [
+const finx360Steps = [
   {
-    step: '1',
-    title: 'O cliente faz uma compra na sua loja e recebe um valor de volta em cashback',
+    step: 'F',
+    title: 'Fidelização',
+    description: 'Criamos estratégias personalizadas de fidelização que transformam clientes ocasionais em clientes recorrentes, aumentando o valor do ciclo de vida do cliente.',
   },
   {
-    step: '2',
-    title: 'Ele é avisado com o valor disponível do cashback. Podendo ver a notificação no celular com nosso app, por email, SMS ou WhatsApp.',
+    step: 'I',
+    title: 'Integração',
+    description: 'Integramos todas as ferramentas necessárias em uma única plataforma, conectando seu e-commerce, CRM, automações e canais de comunicação.',
   },
   {
-    step: '3',
-    title: 'O sistema envia uma mensagem para o cliente lembrando do seu saldo e prazo para resgatar o cashback.',
+    step: 'N',
+    title: 'Nutrição',
+    description: 'Nutrimos o relacionamento com seus clientes através de comunicações personalizadas, ofertas relevantes e momentos certos de engajamento.',
   },
   {
-    step: '4',
-    title: 'Cliente volta para a sua loja, faz novas compras, e se torna recorrente. Parabéns, você fidelizou um novo cliente! 😀',
+    step: 'X',
+    title: 'Experiência',
+    description: 'Criamos experiências memoráveis em cada ponto de contato, desde a primeira compra até o pós-venda, garantindo satisfação e retenção.',
+  },
+  {
+    step: '360',
+    title: 'Visão 360°',
+    description: 'Oferecemos uma visão completa do seu cliente: histórico de compras, preferências, comportamento e oportunidades de upsell e cross-sell.',
   },
 ]
 
@@ -203,11 +210,11 @@ const blogPosts = [
 const footerLinks = {
   content: [
     { name: 'Integrações', href: '#integracoes' },
-    { name: 'Por que a Estimulus', href: '#porque' },
+    { name: 'Calculadoras', href: '#calculadoras' },
     { name: 'Cashback', href: '#servicos' },
     { name: 'CRM', href: '#servicos' },
     { name: 'Automação', href: '#servicos' },
-    { name: 'Resultados', href: '#resultados' },
+    { name: 'Raio-X', href: '#raio-x' },
     { name: 'Blog', href: '#blog' },
   ],
   institutional: [
@@ -353,22 +360,22 @@ export default function HomePage() {
         </div>
 
         {/* Big Numbers Section - Inspirado no Riscamundo */}
-        <div id="resultados" className="relative mx-auto -mt-20 max-w-7xl px-6 sm:mt-0 lg:px-8">
+        <div id="raio-x" className="relative mx-auto -mt-20 max-w-7xl px-6 sm:mt-0 lg:px-8">
           <div className="absolute inset-0 pattern-dots opacity-30" />
           <div className="relative mx-auto max-w-6xl">
-            <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
               {bigNumbers.map((item, index) => (
                 <div 
                   key={item.label} 
-                  className="group relative glass rounded-3xl p-8 text-center card-hover border border-white/20 shadow-card glow-effect overflow-hidden"
+                  className="group relative glass rounded-3xl p-10 text-center card-hover border border-white/20 shadow-card glow-effect overflow-hidden"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#2A3B95]/20 to-[#5D2C9D]/20 rounded-full blur-3xl" />
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#2A3B95]/20 to-[#5D2C9D]/20 rounded-full blur-3xl" />
                   <div className="relative z-10">
-                    <div className="text-5xl mb-3 animate-float" style={{ animationDelay: `${index * 0.2}s` }}>{item.icon}</div>
-                    <div className="number-highlight mb-2">{item.number}</div>
-                    <dt className="text-lg font-bold text-gray-900 mb-1">{item.label}</dt>
-                    <dd className="text-sm text-gray-600">{item.description}</dd>
+                    <div className="text-6xl mb-4 animate-float" style={{ animationDelay: `${index * 0.2}s` }}>{item.icon}</div>
+                    <div className="number-highlight mb-3">{item.number}</div>
+                    <dt className="text-xl font-black text-gray-900 mb-2">{item.label}</dt>
+                    <dd className="text-base text-gray-600">{item.description}</dd>
                   </div>
                 </div>
               ))}
@@ -461,39 +468,45 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Process section */}
+        {/* FINX 360 Methodology section */}
         <div className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
           <div className="absolute inset-0 gradient-mesh opacity-30" />
-          <div className="relative mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-              Um sistema de cashback <span className="text-gradient">simples e eficaz</span>
-            </h2>
-            <p className="mt-6 text-xl text-gray-600 font-medium">
-              Poucos passos, muito lucro
-            </p>
-          </div>
-          <div className="relative mx-auto mt-16 max-w-4xl lg:mx-0 lg:max-w-none">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-              {processSteps.map((step, index) => (
-                <div 
-                  key={index} 
-                  className="group glass rounded-2xl p-6 card-hover border border-white/20 shadow-card flex gap-4"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    {step.step}
+          <div className="relative mx-auto max-w-4xl lg:mx-0">
+            <div className="text-center mb-12">
+              <h2 className="text-pretty text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl mb-4">
+                Metodologia <span className="text-gradient">FINX 360</span>
+              </h2>
+              <p className="mt-6 text-lg text-gray-600 sm:text-xl max-w-3xl mx-auto">
+                Uma abordagem completa e integrada para transformar a forma como você se relaciona com seus clientes, criando um ciclo virtuoso de fidelização e crescimento.
+              </p>
+            </div>
+            <div className="relative mx-auto mt-16 max-w-6xl lg:mx-0 lg:max-w-none">
+              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                {finx360Steps.map((step, index) => (
+                  <div 
+                    key={index} 
+                    className="group relative glass rounded-2xl p-8 card-hover border border-white/20 shadow-card"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#2A3B95]/10 via-[#5D2C9D]/10 to-[#008C9E]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="relative">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="flex size-16 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] text-white font-black text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+                          {step.step}
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
+                      </div>
+                      <p className="text-base text-gray-600 leading-relaxed">{step.description}</p>
+                    </div>
                   </div>
-                  <div className="flex-1 pt-1">
-                    <p className="text-base font-medium text-gray-900 leading-relaxed">{step.title}</p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Calculator CTA */}
-        <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+        {/* Calculadoras section */}
+        <div id="calculadoras" className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] px-8 py-20 text-center shadow-2xl">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIi8+PC9nPjwvZz48L3N2Zz4=')] opacity-20" />
             <div className="relative">

@@ -28,18 +28,18 @@ export default function Logo({ className = '' }: LogoProps) {
           <Image
             src="/logo.png"
             alt="Estimulus"
-            width={150}
-            height={40}
-            className="h-10 w-auto"
+            width={200}
+            height={60}
+            className="h-16 w-auto"
             priority
           />
         ) : (
           // Fallback: Logo em texto estilizado com identidade visual
           <div className="flex items-center gap-2.5">
-            <div className="flex size-10 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 shadow-lg">
-              <span className="text-xl font-bold text-white">E</span>
+            <div className="flex size-16 items-center justify-center rounded-lg bg-gradient-to-br from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] shadow-lg">
+              <span className="text-2xl font-bold text-white">E</span>
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <span className="text-3xl font-bold bg-gradient-to-r from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] bg-clip-text text-transparent">
               Estimulus
             </span>
           </div>
