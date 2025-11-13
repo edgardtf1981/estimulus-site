@@ -173,6 +173,33 @@ const testimonials = [
   },
 ]
 
+const blogPosts = [
+  {
+    id: 1,
+    title: 'Como aumentar a retenção de clientes com cashback estratégico',
+    description: 'Descubra estratégias comprovadas para usar o cashback como ferramenta de fidelização e aumentar a retenção de clientes em até 40%.',
+    imageUrl: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
+    date: '15 Jan 2025',
+    category: 'Fidelização',
+  },
+  {
+    id: 2,
+    title: '5 dicas essenciais para criar um programa de fidelidade eficaz',
+    description: 'Aprenda os fundamentos para criar um programa de fidelidade que realmente engaja seus clientes e gera resultados mensuráveis.',
+    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+    date: '10 Jan 2025',
+    category: 'Estratégia',
+  },
+  {
+    id: 3,
+    title: 'ROI do cashback: como medir o retorno do seu investimento',
+    description: 'Entenda como calcular e otimizar o ROI do seu programa de cashback, com métricas práticas e cases de sucesso.',
+    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+    date: '5 Jan 2025',
+    category: 'Métricas',
+  },
+]
+
 const footerLinks = {
   content: [
     { name: 'Integrações', href: '#integracoes' },
@@ -217,13 +244,13 @@ export default function HomePage() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900 hover:text-indigo-600 transition-colors">
+              <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900 hover:text-[#2A3B95] transition-colors">
                 {item.name}
               </a>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#contato" className="text-sm/6 font-semibold text-gray-900 hover:text-indigo-600 transition-colors">
+            <a href="#contato" className="text-sm/6 font-semibold text-gray-900 hover:text-[#2A3B95] transition-colors">
               Fale conosco <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
@@ -285,39 +312,39 @@ export default function HomePage() {
                 clipPath:
                   'polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)',
               }}
-              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-indigo-400/30 via-purple-400/30 to-pink-400/30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] animate-pulse-slow"
+              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#2A3B95]/30 via-[#5D2C9D]/30 to-[#008C9E]/30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] animate-pulse-slow"
             />
           </div>
           <div className="mx-auto max-w-7xl px-6 pt-10 sm:pb-32 lg:px-8 lg:pt-20">
             <div className="mx-auto max-w-3xl text-center animate-fade-in">
-              <h1 className="text-pretty text-5xl font-black tracking-tight text-gray-900 sm:text-7xl lg:text-8xl">
+              <h1 className="text-pretty text-4xl font-black tracking-tight text-gray-900 sm:text-6xl lg:text-7xl">
                 Escolha a <span className="text-gradient">fidelização</span> de clientes e lucre mais
               </h1>
-              <p className="mt-8 text-xl/8 text-gray-600 sm:text-2xl">
+              <p className="mt-8 text-lg/8 text-gray-600 sm:text-xl">
                 Aumente suas vendas com soluções de fidelização de clientes. Cashback, CRM e Automação de mensagens: tudo em um só lugar para alavancar seu negócio.
               </p>
               <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
                   href="#contato"
-                  className="group relative rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-8 py-4 text-base font-semibold text-white shadow-2xl hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 shine-effect overflow-hidden"
+                  className="group relative rounded-xl bg-gradient-to-r from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] px-8 py-4 text-base font-semibold text-white shadow-2xl hover:shadow-[#2A3B95]/50 transition-all duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2A3B95] shine-effect overflow-hidden"
                 >
                   <span className="relative z-10">Agende uma reunião</span>
                 </a>
-                <a href="#servicos" className="group flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 text-base font-semibold text-gray-900 hover:border-indigo-600 hover:text-indigo-600 transition-all duration-300">
+                <a href="#servicos" className="group flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 text-base font-semibold text-gray-900 hover:border-[#2A3B95] hover:text-[#2A3B95] transition-all duration-300">
                   Saiba mais <ArrowRightIcon className="size-5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
               <div className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm/6 text-gray-600">
                 <div className="flex items-center gap-x-2.5">
-                  <CheckCircleIcon className="size-5 flex-none text-indigo-600" />
+                  <CheckCircleIcon className="size-5 flex-none text-[#2A3B95]" />
                   Retenção elevada de clientes
                 </div>
                 <div className="flex items-center gap-x-2.5">
-                  <CheckCircleIcon className="size-5 flex-none text-indigo-600" />
+                  <CheckCircleIcon className="size-5 flex-none text-[#2A3B95]" />
                   Suporte especializado
                 </div>
                 <div className="flex items-center gap-x-2.5">
-                  <CheckCircleIcon className="size-5 flex-none text-indigo-600" />
+                  <CheckCircleIcon className="size-5 flex-none text-[#2A3B95]" />
                   Integração simplificada
                 </div>
               </div>
@@ -336,7 +363,7 @@ export default function HomePage() {
                   className="group relative glass rounded-3xl p-8 text-center card-hover border border-white/20 shadow-card glow-effect overflow-hidden"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl" />
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#2A3B95]/20 to-[#5D2C9D]/20 rounded-full blur-3xl" />
                   <div className="relative z-10">
                     <div className="text-5xl mb-3 animate-float" style={{ animationDelay: `${index * 0.2}s` }}>{item.icon}</div>
                     <div className="number-highlight mb-2">{item.number}</div>
@@ -360,9 +387,9 @@ export default function HomePage() {
                   className="group relative glass rounded-2xl p-8 text-center card-hover border border-white/20 shadow-card"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#2A3B95]/10 via-[#5D2C9D]/10 to-[#008C9E]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="relative">
-                    <dd className="text-6xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">{stat.value}</dd>
+                    <dd className="text-5xl font-bold tracking-tight bg-gradient-to-r from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] bg-clip-text text-transparent mb-3">{stat.value}</dd>
                     <dt className="text-base font-medium text-gray-700 mb-1">{stat.label}</dt>
                     <dd className="text-sm text-gray-500">{stat.description}</dd>
                   </div>
@@ -377,10 +404,10 @@ export default function HomePage() {
           <div className="absolute inset-0 gradient-mesh opacity-50" />
           <div className="section-divider" />
           <div className="relative mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            <h2 className="text-pretty text-3xl font-black tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
               Transforme seu negócio em um <span className="text-gradient">ímã de clientes</span>
             </h2>
-            <p className="mt-6 text-lg/8 text-gray-600 sm:text-xl">
+            <p className="mt-6 text-base/8 text-gray-600 sm:text-lg">
               Oferecemos as ferramentas certas para você fidelizar clientes, aumentar suas vendas e automatizar processos. Descubra como o nosso sistema de Cashback, CRM e Automação pode revolucionar a forma como você se conecta com seus consumidores.
             </p>
           </div>
@@ -394,11 +421,11 @@ export default function HomePage() {
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative">
                   <dt className="font-semibold text-gray-900">
-                    <div className="mb-6 flex size-14 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="mb-6 flex size-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <CheckCircleIcon className="size-7 text-white" aria-hidden="true" />
                     </div>
                     <div className="text-2xl font-bold mb-2">{service.name}</div>
-                    <div className="text-sm font-medium text-indigo-600">{service.subtitle}</div>
+                    <div className="text-sm font-medium text-[#2A3B95]">{service.subtitle}</div>
                   </dt>
                   <dd className="mt-4 text-gray-600 leading-relaxed">{service.description}</dd>
                 </div>
@@ -421,9 +448,9 @@ export default function HomePage() {
                 className="group relative glass rounded-2xl p-10 card-hover border border-white/20 shadow-card overflow-hidden"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#2A3B95]/20 to-[#5D2C9D]/20 rounded-full blur-3xl" />
                 <div className="relative">
-                  <div className="mb-6 flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <div className="mb-6 flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                     <app.icon className="size-8 text-white" aria-hidden="true" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">{app.title}</h3>
@@ -453,7 +480,7 @@ export default function HomePage() {
                   className="group glass rounded-2xl p-6 card-hover border border-white/20 shadow-card flex gap-4"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
                     {step.step}
                   </div>
                   <div className="flex-1 pt-1">
@@ -467,7 +494,7 @@ export default function HomePage() {
 
         {/* Calculator CTA */}
         <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-8 py-20 text-center shadow-2xl">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] px-8 py-20 text-center shadow-2xl">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIi8+PC9nPjwvZz48L3N2Zz4=')] opacity-20" />
             <div className="relative">
               <div className="mx-auto mb-6 flex size-16 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm">
@@ -478,7 +505,7 @@ export default function HomePage() {
               </h2>
               <a
                 href="#contato"
-                className="group inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-indigo-600 shadow-2xl hover:bg-gray-50 hover:scale-105 transition-all duration-300"
+                className="group inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-[#2A3B95] shadow-2xl hover:bg-gray-50 hover:scale-105 transition-all duration-300"
               >
                 Usar a calculadora
                 <ArrowRightIcon className="size-5 group-hover:translate-x-1 transition-transform" />
@@ -503,7 +530,7 @@ export default function HomePage() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="relative z-10">
-                    <div className="text-4xl font-black text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text mb-2">
+                    <div className="text-4xl font-black text-transparent bg-gradient-to-r from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] bg-clip-text mb-2">
                       {partner.percentage}%
                     </div>
                     <div className="text-sm font-semibold text-gray-700">{partner.name}</div>
@@ -532,7 +559,7 @@ export default function HomePage() {
                 className="group glass rounded-xl p-6 card-hover border border-white/20 shadow-card flex items-center justify-center h-20 magnetic-hover"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <span className="text-sm font-semibold text-gray-700 group-hover:text-indigo-600 transition-colors">{integration.name}</span>
+                <span className="text-sm font-semibold text-gray-700 group-hover:text-[#2A3B95] transition-colors">{integration.name}</span>
               </div>
             ))}
           </div>
@@ -557,7 +584,7 @@ export default function HomePage() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <dt className="font-semibold text-gray-900">
-                  <div className="mb-6 flex size-14 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <div className="mb-6 flex size-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <item.icon className="size-7 text-white" aria-hidden="true" />
                   </div>
                   <div className="text-xl font-bold mb-3">{item.name}</div>
@@ -583,16 +610,66 @@ export default function HomePage() {
                 className="group glass rounded-2xl p-8 card-hover border border-white/20 shadow-card"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="mb-6 text-4xl text-indigo-200">"</div>
+                <div className="mb-6 text-4xl text-[#2A3B95]/30">"</div>
                 <p className="text-base/7 text-gray-900 mb-6 leading-relaxed">&ldquo;{testimonial.content}&rdquo;</p>
                 <div className="flex items-center gap-x-4 pt-6 border-t border-gray-200">
-                  <div className="size-12 rounded-full bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 shadow-lg" />
+                  <div className="size-12 rounded-full bg-gradient-to-br from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] shadow-lg" />
                   <div>
                     <div className="text-base font-bold text-gray-900">{testimonial.name}</div>
                     <div className="text-sm text-gray-600">{testimonial.role}</div>
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Blog section */}
+        <div id="blog" className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+          <div className="absolute inset-0 gradient-mesh opacity-20" />
+          <div className="relative mx-auto max-w-2xl lg:mx-0">
+            <h2 className="text-pretty text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+              Últimas do <span className="text-gradient">Blog</span>
+            </h2>
+            <p className="mt-6 text-lg text-gray-600 sm:text-xl">
+              Aprenda sobre fidelização de clientes, cashback e estratégias de crescimento
+            </p>
+          </div>
+          <div className="relative mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            {blogPosts.map((post) => (
+              <article
+                key={post.id}
+                className="group relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80 card-hover"
+              >
+                <Image
+                  src={post.imageUrl}
+                  alt={post.title}
+                  fill
+                  className="absolute inset-0 -z-10 object-cover"
+                />
+                <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
+                <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+
+                <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-gray-300 mb-4">
+                  <time dateTime={post.date} className="mr-4">
+                    {post.date}
+                  </time>
+                  <div className="flex items-center gap-x-2">
+                    <span className="px-3 py-1 rounded-full bg-[#2A3B95]/30 text-white text-xs font-semibold">
+                      {post.category}
+                    </span>
+                  </div>
+                </div>
+                <h3 className="mt-3 text-xl font-bold text-white group-hover:text-[#008C9E] transition-colors">
+                  <a href={`#blog-${post.id}`}>
+                    <span className="absolute inset-0" />
+                    {post.title}
+                  </a>
+                </h3>
+                <p className="mt-3 text-sm/6 text-gray-300 line-clamp-2">
+                  {post.description}
+                </p>
+              </article>
             ))}
           </div>
         </div>
@@ -620,7 +697,7 @@ export default function HomePage() {
                 >
                   <dt className="text-lg font-semibold text-gray-900 pr-8">{faq.question}</dt>
                   <ChevronDownIcon
-                    className={`size-6 shrink-0 text-indigo-600 transition-all duration-300 ${openFaq === index ? 'rotate-180' : ''}`}
+                    className={`size-6 shrink-0 text-[#2A3B95] transition-all duration-300 ${openFaq === index ? 'rotate-180' : ''}`}
                   />
                 </button>
                 {openFaq === index && (
@@ -656,13 +733,13 @@ export default function HomePage() {
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="#contato"
-                className="group relative rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-8 py-4 text-base font-semibold text-white shadow-2xl hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 shine-effect overflow-hidden"
+                className="group relative rounded-xl bg-gradient-to-r from-[#2A3B95] via-[#5D2C9D] to-[#008C9E] px-8 py-4 text-base font-semibold text-white shadow-2xl hover:shadow-[#2A3B95]/50 transition-all duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2A3B95] shine-effect overflow-hidden"
               >
                 <span className="relative z-10">Agende uma reunião</span>
               </a>
-              <a href="#servicos" className="group flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 text-base font-semibold text-gray-900 hover:border-indigo-600 hover:text-indigo-600 transition-all duration-300">
-                Solicite uma demonstração <ArrowRightIcon className="size-5 group-hover:translate-x-1 transition-transform" />
-              </a>
+                <a href="#servicos" className="group flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 text-base font-semibold text-gray-900 hover:border-[#2A3B95] hover:text-[#2A3B95] transition-all duration-300">
+                  Solicite uma demonstração <ArrowRightIcon className="size-5 group-hover:translate-x-1 transition-transform" />
+                </a>
             </div>
           </div>
         </div>

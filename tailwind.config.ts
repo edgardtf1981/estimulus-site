@@ -22,14 +22,16 @@ const config: Config = {
           900: '#312e81',
         },
         brand: {
-          indigo: '#4f46e5',
-          purple: '#9333ea',
-          pink: '#ec4899',
+          navy: '#2A3B95',
+          purple: '#5D2C9D',
+          teal: '#008C9E',
+          gray: '#B8B8B8',
+          white: '#ffffff',
         },
       },
       backgroundImage: {
-        'gradient-brand': 'linear-gradient(to right, #4f46e5, #9333ea, #ec4899)',
-        'gradient-mesh': 'radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(147, 51, 234, 0.1) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.1) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(99, 102, 241, 0.1) 0px, transparent 50%)',
+        'gradient-brand': 'linear-gradient(to right, #2A3B95, #5D2C9D, #008C9E)',
+        'gradient-mesh': 'radial-gradient(at 0% 0%, rgba(42, 59, 149, 0.1) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(93, 44, 157, 0.1) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(0, 140, 158, 0.1) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(42, 59, 149, 0.1) 0px, transparent 50%)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
@@ -55,8 +57,8 @@ const config: Config = {
           '50%': { transform: 'translateY(-20px)' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.3)' },
-          '100%': { boxShadow: '0 0 40px rgba(99, 102, 241, 0.6)' },
+          '0%': { boxShadow: '0 0 20px rgba(42, 59, 149, 0.3)' },
+          '100%': { boxShadow: '0 0 40px rgba(42, 59, 149, 0.6)' },
         },
         slideInLeft: {
           '0%': { transform: 'translateX(-100px)', opacity: '0' },
