@@ -16,7 +16,7 @@ export default function Logo({ className = '' }: LogoProps) {
     const img = new window.Image()
     img.onload = () => setImageLoaded(true)
     img.onerror = () => setImageError(true)
-    img.src = '/logo.svg'
+    img.src = '/logo.png'
   }, [])
 
   // Tenta carregar a logo, se não encontrar, usa texto estilizado
@@ -26,7 +26,7 @@ export default function Logo({ className = '' }: LogoProps) {
         {/* Tenta carregar logo da pasta public */}
         {imageLoaded && !imageError ? (
           <Image
-            src="/logo.svg"
+            src="/logo.png"
             alt="Estimulus"
             width={150}
             height={40}
