@@ -186,7 +186,7 @@ export default function HomePage() {
   return (
     <div className="bg-white">
       {/* Header */}
-      <header className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+      <header className="fixed inset-x-0 top-0 z-50 glass border-b border-white/20 shadow-glass">
         <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
             <Logo />
@@ -259,7 +259,9 @@ export default function HomePage() {
 
       <main className="isolate">
         {/* Hero section */}
-        <div id="inicio" className="relative isolate -z-10 pt-24">
+        <div id="inicio" className="relative isolate -z-10 pt-32 pb-20 overflow-hidden">
+          {/* Animated gradient background */}
+          <div className="absolute inset-0 gradient-mesh" />
           <div
             aria-hidden="true"
             className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -269,26 +271,26 @@ export default function HomePage() {
                 clipPath:
                   'polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)',
               }}
-              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-indigo-400/30 via-purple-400/30 to-pink-400/30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] animate-pulse-slow"
             />
           </div>
-          <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:px-8 lg:pt-20">
-            <div className="mx-auto max-w-2xl text-center">
-              <h1 className="text-pretty text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
-                Escolha a fidelização de clientes e lucre mais
+          <div className="mx-auto max-w-7xl px-6 pt-10 sm:pb-32 lg:px-8 lg:pt-20">
+            <div className="mx-auto max-w-3xl text-center animate-fade-in">
+              <h1 className="text-pretty text-5xl font-bold tracking-tight text-gray-900 sm:text-7xl lg:text-8xl">
+                Escolha a <span className="text-gradient">fidelização</span> de clientes e lucre mais
               </h1>
-              <p className="mt-6 text-lg/8 text-gray-600">
+              <p className="mt-8 text-xl/8 text-gray-600 sm:text-2xl">
                 Aumente suas vendas com soluções de fidelização de clientes. Cashback, CRM e Automação de mensagens: tudo em um só lugar para alavancar seu negócio.
               </p>
-              <div className="mt-10 flex items-center justify-center gap-x-6">
+              <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
                   href="#contato"
-                  className="rounded-md bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="group relative rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-8 py-4 text-base font-semibold text-white shadow-2xl hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 shine-effect overflow-hidden"
                 >
-                  Agende uma reunião
+                  <span className="relative z-10">Agende uma reunião</span>
                 </a>
-                <a href="#servicos" className="text-sm/6 font-semibold text-gray-900 hover:text-indigo-600 transition-colors">
-                  Saiba mais <span aria-hidden="true">→</span>
+                <a href="#servicos" className="group flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 text-base font-semibold text-gray-900 hover:border-indigo-600 hover:text-indigo-600 transition-all duration-300">
+                  Saiba mais <ArrowRightIcon className="size-5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
               <div className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm/6 text-gray-600">
@@ -310,16 +312,20 @@ export default function HomePage() {
         </div>
 
         {/* Stats section */}
-        <div id="resultados" className="mx-auto -mt-12 max-w-7xl px-6 sm:mt-0 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-            <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl text-center mb-12">
-              A fidelização de clientes é só o começo
-            </h2>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col items-center text-center gap-y-4">
-                  <dd className="text-5xl font-semibold tracking-tight text-gray-900">{stat.value}</dd>
-                  <dt className="text-base/7 text-gray-600">{stat.label}</dt>
+        <div id="resultados" className="relative mx-auto -mt-20 max-w-7xl px-6 sm:mt-0 lg:px-8">
+          <div className="relative mx-auto max-w-6xl">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+              {stats.map((stat, index) => (
+                <div 
+                  key={stat.label} 
+                  className="group relative glass rounded-2xl p-8 text-center card-hover border border-white/20 shadow-card"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative">
+                    <dd className="text-6xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">{stat.value}</dd>
+                    <dt className="text-base font-medium text-gray-700">{stat.label}</dt>
+                  </div>
                 </div>
               ))}
             </div>
@@ -327,70 +333,90 @@ export default function HomePage() {
         </div>
 
         {/* Services section */}
-        <div id="servicos" className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-              Transforme seu negócio em um ímã de clientes
+        <div id="servicos" className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+          <div className="absolute inset-0 gradient-mesh opacity-50" />
+          <div className="relative mx-auto max-w-2xl lg:mx-0">
+            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+              Transforme seu negócio em um <span className="text-gradient">ímã de clientes</span>
             </h2>
-            <p className="mt-6 text-lg/8 text-gray-600">
+            <p className="mt-6 text-lg/8 text-gray-600 sm:text-xl">
               Oferecemos as ferramentas certas para você fidelizar clientes, aumentar suas vendas e automatizar processos. Descubra como o nosso sistema de Cashback, CRM e Automação pode revolucionar a forma como você se conecta com seus consumidores.
             </p>
           </div>
-          <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base/7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {services.map((service) => (
-              <div key={service.name} className="flex flex-col">
-                <dt className="font-semibold text-gray-900">
-                  <div className="mb-6 flex size-10 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 shadow-lg">
-                    <CheckCircleIcon className="size-6 text-white" aria-hidden="true" />
-                  </div>
-                  <div className="text-xl">{service.name}</div>
-                  <div className="text-sm font-normal text-indigo-600 mt-2">{service.subtitle}</div>
-                </dt>
-                <dd className="mt-4 text-gray-600">{service.description}</dd>
+          <dl className="relative mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            {services.map((service, index) => (
+              <div 
+                key={service.name} 
+                className="group relative glass rounded-2xl p-8 card-hover border border-white/20 shadow-card"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative">
+                  <dt className="font-semibold text-gray-900">
+                    <div className="mb-6 flex size-14 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <CheckCircleIcon className="size-7 text-white" aria-hidden="true" />
+                    </div>
+                    <div className="text-2xl font-bold mb-2">{service.name}</div>
+                    <div className="text-sm font-medium text-indigo-600">{service.subtitle}</div>
+                  </dt>
+                  <dd className="mt-4 text-gray-600 leading-relaxed">{service.description}</dd>
+                </div>
               </div>
             ))}
           </dl>
         </div>
 
         {/* Apps section */}
-        <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+        <div className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-              Aplicativos para você e seus clientes
+            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+              Aplicativos para você e seus <span className="text-gradient">clientes</span>
             </h2>
           </div>
           <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-            {apps.map((app) => (
-              <div key={app.name} className="flex flex-col rounded-2xl bg-gray-50 p-8">
-                <div className="mb-6 flex size-12 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600">
-                  <app.icon className="size-6 text-white" aria-hidden="true" />
+            {apps.map((app, index) => (
+              <div 
+                key={app.name} 
+                className="group relative glass rounded-2xl p-10 card-hover border border-white/20 shadow-card overflow-hidden"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl" />
+                <div className="relative">
+                  <div className="mb-6 flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    <app.icon className="size-8 text-white" aria-hidden="true" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{app.title}</h3>
+                  <p className="text-base/7 text-gray-600 leading-relaxed">{app.description}</p>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{app.title}</h3>
-                <p className="text-base/7 text-gray-600">{app.description}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Process section */}
-        <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-              Um sistema de cashback simples e eficaz
+        <div className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+          <div className="absolute inset-0 gradient-mesh opacity-30" />
+          <div className="relative mx-auto max-w-2xl lg:mx-0">
+            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+              Um sistema de cashback <span className="text-gradient">simples e eficaz</span>
             </h2>
-            <p className="mt-6 text-lg/8 text-gray-600">
+            <p className="mt-6 text-xl text-gray-600 font-medium">
               Poucos passos, muito lucro
             </p>
           </div>
-          <div className="mx-auto mt-16 max-w-2xl lg:mx-0 lg:max-w-none">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div className="relative mx-auto mt-16 max-w-4xl lg:mx-0 lg:max-w-none">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
               {processSteps.map((step, index) => (
-                <div key={index} className="flex gap-4">
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white font-bold text-lg">
+                <div 
+                  key={index} 
+                  className="group glass rounded-2xl p-6 card-hover border border-white/20 shadow-card flex gap-4"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
                     {step.step}
                   </div>
-                  <div className="flex-1">
-                    <p className="text-base/7 text-gray-900">{step.title}</p>
+                  <div className="flex-1 pt-1">
+                    <p className="text-base font-medium text-gray-900 leading-relaxed">{step.title}</p>
                   </div>
                 </div>
               ))}
@@ -400,80 +426,102 @@ export default function HomePage() {
 
         {/* Calculator CTA */}
         <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-8 py-16 text-center">
-            <CalculatorIcon className="mx-auto size-12 text-white mb-4" />
-            <h2 className="text-3xl font-semibold text-white mb-4">
-              Descubra quanto o Cashback te fará lucrar com a nossa calculadora!
-            </h2>
-            <a
-              href="#contato"
-              className="mt-6 inline-block rounded-md bg-white px-6 py-3 text-sm font-semibold text-indigo-600 shadow-lg hover:bg-gray-50 transition-colors"
-            >
-              Usar a calculadora
-            </a>
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-8 py-20 text-center shadow-2xl">
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIi8+PC9nPjwvZz48L3N2Zz4=')] opacity-20" />
+            <div className="relative">
+              <div className="mx-auto mb-6 flex size-16 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm">
+                <CalculatorIcon className="size-8 text-white animate-float" />
+              </div>
+              <h2 className="text-3xl font-bold text-white mb-6 sm:text-4xl">
+                Descubra quanto o Cashback te fará lucrar com a nossa calculadora!
+              </h2>
+              <a
+                href="#contato"
+                className="group inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-indigo-600 shadow-2xl hover:bg-gray-50 hover:scale-105 transition-all duration-300"
+              >
+                Usar a calculadora
+                <ArrowRightIcon className="size-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Integrations section */}
-        <div id="integracoes" className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl text-center">
-              Em sincronia com as ferramentas que você já usa
+        <div id="integracoes" className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+          <div className="absolute inset-0 gradient-mesh opacity-20" />
+          <div className="relative mx-auto max-w-2xl lg:mx-0">
+            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl text-center">
+              Em sincronia com as <span className="text-gradient">ferramentas</span> que você já usa
             </h2>
-            <p className="mt-6 text-lg/8 text-gray-600 text-center">
+            <p className="mt-6 text-xl text-gray-600 text-center">
               Conecte suas ferramentas e trabalhe de forma integrada
             </p>
           </div>
-          <div className="mx-auto mt-16 grid max-w-lg grid-cols-3 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-4 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
-            {integrations.map((integration) => (
-              <div key={integration.name} className="flex items-center justify-center h-12 bg-gray-100 rounded-lg px-4">
-                <span className="text-sm font-medium text-gray-600">{integration.name}</span>
+          <div className="relative mx-auto mt-16 grid max-w-lg grid-cols-3 items-center gap-6 sm:max-w-xl sm:grid-cols-4 sm:gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-6">
+            {integrations.map((integration, index) => (
+              <div 
+                key={integration.name} 
+                className="group glass rounded-xl p-6 card-hover border border-white/20 shadow-card flex items-center justify-center h-20"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <span className="text-sm font-semibold text-gray-700 group-hover:text-indigo-600 transition-colors">{integration.name}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Implementation section */}
-        <div id="sobre" className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-              Apoio total em cada etapa
+        <div id="sobre" className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+          <div className="absolute inset-0 gradient-mesh opacity-30" />
+          <div className="relative mx-auto max-w-2xl lg:mx-0">
+            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+              Apoio total em <span className="text-gradient">cada etapa</span>
             </h2>
-            <p className="mt-6 text-lg/8 text-gray-600">
+            <p className="mt-6 text-xl text-gray-600">
               Entendemos que a adoção de uma nova tecnologia pode parecer desafiadora. Por isso, estamos comprometidos em garantir que a transição para a nossa plataforma seja suave e eficiente.
             </p>
           </div>
-          <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base/7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {implementation.map((item) => (
-              <div key={item.name}>
+          <dl className="relative mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            {implementation.map((item, index) => (
+              <div 
+                key={item.name}
+                className="group glass rounded-2xl p-8 card-hover border border-white/20 shadow-card"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 <dt className="font-semibold text-gray-900">
-                  <div className="mb-6 flex size-10 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600">
-                    <item.icon className="size-6 text-white" aria-hidden="true" />
+                  <div className="mb-6 flex size-14 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <item.icon className="size-7 text-white" aria-hidden="true" />
                   </div>
-                  {item.name}
+                  <div className="text-xl font-bold mb-3">{item.name}</div>
                 </dt>
-                <dd className="mt-4 text-gray-600">{item.description}</dd>
+                <dd className="mt-4 text-gray-600 leading-relaxed">{item.description}</dd>
               </div>
             ))}
           </dl>
         </div>
 
         {/* Testimonials section */}
-        <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-              Mais de 2000 empresas confiam na Estimulus
+        <div className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+          <div className="absolute inset-0 gradient-mesh opacity-30" />
+          <div className="relative mx-auto max-w-2xl lg:mx-0">
+            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+              Mais de <span className="text-gradient">2000 empresas</span> confiam na Estimulus
             </h2>
           </div>
-          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.name} className="flex flex-col rounded-2xl bg-gray-50 p-8">
-                <p className="text-base/7 text-gray-900">&ldquo;{testimonial.content}&rdquo;</p>
-                <div className="mt-6 flex items-center gap-x-4">
-                  <div className="size-12 rounded-full bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600" />
+          <div className="relative mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={testimonial.name} 
+                className="group glass rounded-2xl p-8 card-hover border border-white/20 shadow-card"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="mb-6 text-4xl text-indigo-200">"</div>
+                <p className="text-base/7 text-gray-900 mb-6 leading-relaxed">&ldquo;{testimonial.content}&rdquo;</p>
+                <div className="flex items-center gap-x-4 pt-6 border-t border-gray-200">
+                  <div className="size-12 rounded-full bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 shadow-lg" />
                   <div>
-                    <div className="text-base font-semibold text-gray-900">{testimonial.name}</div>
-                    <div className="text-sm/6 text-gray-600">{testimonial.role}</div>
+                    <div className="text-base font-bold text-gray-900">{testimonial.name}</div>
+                    <div className="text-sm text-gray-600">{testimonial.role}</div>
                   </div>
                 </div>
               </div>
@@ -482,26 +530,33 @@ export default function HomePage() {
         </div>
 
         {/* FAQ section */}
-        <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-              Perguntas frequentes
+        <div className="relative mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+          <div className="absolute inset-0 gradient-mesh opacity-20" />
+          <div className="relative mx-auto max-w-3xl lg:mx-0">
+            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl text-center mb-4">
+              Perguntas <span className="text-gradient">frequentes</span>
             </h2>
+            <p className="text-center text-lg text-gray-600 mb-12">
+              Tire suas dúvidas sobre nossa plataforma
+            </p>
           </div>
-          <dl className="mx-auto mt-16 max-w-2xl space-y-8 lg:mx-0 lg:max-w-none">
+          <dl className="relative mx-auto mt-8 max-w-3xl space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="border-b border-gray-200 pb-8">
+              <div 
+                key={index} 
+                className="group glass rounded-2xl border border-white/20 shadow-card overflow-hidden"
+              >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="flex w-full items-start justify-between text-left"
+                  className="flex w-full items-center justify-between p-6 text-left hover:bg-white/50 transition-colors"
                 >
-                  <dt className="text-base font-semibold text-gray-900 pr-8">{faq.question}</dt>
+                  <dt className="text-lg font-semibold text-gray-900 pr-8">{faq.question}</dt>
                   <ChevronDownIcon
-                    className={`size-5 shrink-0 text-gray-500 transition-transform ${openFaq === index ? 'rotate-180' : ''}`}
+                    className={`size-6 shrink-0 text-indigo-600 transition-all duration-300 ${openFaq === index ? 'rotate-180' : ''}`}
                   />
                 </button>
                 {openFaq === index && (
-                  <dd className="mt-4 text-base/7 text-gray-600">{faq.answer}</dd>
+                  <dd className="px-6 pb-6 text-base text-gray-600 leading-relaxed animate-slide-up">{faq.answer}</dd>
                 )}
               </div>
             ))}
@@ -509,7 +564,8 @@ export default function HomePage() {
         </div>
 
         {/* CTA section */}
-        <div id="contato" className="relative isolate mt-32 px-6 py-32 sm:mt-40 sm:py-40 lg:px-8">
+        <div id="contato" className="relative isolate mt-32 px-6 py-32 sm:mt-40 sm:py-40 lg:px-8 overflow-hidden">
+          <div className="absolute inset-0 gradient-mesh" />
           <div
             aria-hidden="true"
             className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -519,25 +575,25 @@ export default function HomePage() {
                 clipPath:
                   'polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)',
               }}
-              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-indigo-400/20 via-purple-400/20 to-pink-400/20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] animate-pulse-slow"
             />
           </div>
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-              Faça parte da revolução Estimulus
+          <div className="relative mx-auto max-w-3xl text-center">
+            <h2 className="text-pretty text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+              Faça parte da <span className="text-gradient">revolução Estimulus</span>
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg/8 text-gray-600">
+            <p className="mx-auto mt-6 max-w-xl text-xl text-gray-600">
               Transforme seu Negócio. A maneira mais eficaz de utilizar o cashback para fidelizar os clientes.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="#contato"
-                className="rounded-md bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="group relative rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-8 py-4 text-base font-semibold text-white shadow-2xl hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 shine-effect overflow-hidden"
               >
-                Agende uma reunião
+                <span className="relative z-10">Agende uma reunião</span>
               </a>
-              <a href="#servicos" className="text-sm/6 font-semibold text-gray-900 hover:text-indigo-600 transition-colors">
-                Solicite uma demonstração <span aria-hidden="true">→</span>
+              <a href="#servicos" className="group flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 text-base font-semibold text-gray-900 hover:border-indigo-600 hover:text-indigo-600 transition-all duration-300">
+                Solicite uma demonstração <ArrowRightIcon className="size-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </div>
@@ -545,8 +601,9 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-16 sm:mt-32 bg-gray-50">
-        <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+      <footer className="relative mt-16 sm:mt-32 bg-gradient-to-b from-gray-50 to-white border-t border-gray-200">
+        <div className="absolute inset-0 gradient-mesh opacity-20" />
+        <div className="relative mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <Logo />
