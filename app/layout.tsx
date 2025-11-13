@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Comunidade Builder",
-  description: "Template da Comunidade Builder",
+  title: "Estimulus - Fidelização de Clientes",
+  description: "Aumente suas vendas com soluções de fidelização de clientes. Cashback, CRM e Automação de mensagens.",
 };
 
 export default function RootLayout({
