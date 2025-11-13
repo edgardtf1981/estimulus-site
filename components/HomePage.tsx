@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon, CheckCircleIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
+import Logo from './Logo'
 
 const navigation = [
   { name: 'Início', href: '#inicio' },
@@ -60,13 +61,10 @@ export default function HomePage() {
   return (
     <div className="bg-white">
       {/* Header */}
-      <header className="absolute inset-x-0 top-0 z-50">
+      <header className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
         <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Estimulus</span>
-              <span className="text-2xl font-bold text-indigo-600">Estimulus</span>
-            </a>
+            <Logo />
           </div>
           <div className="flex lg:hidden">
             <button
@@ -95,10 +93,7 @@ export default function HomePage() {
           <div className="fixed inset-0 z-50" />
           <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
-              <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">Estimulus</span>
-                <span className="text-2xl font-bold text-indigo-600">Estimulus</span>
-              </a>
+              <Logo />
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
@@ -137,7 +132,7 @@ export default function HomePage() {
 
       <main className="isolate">
         {/* Hero section */}
-        <div id="inicio" className="relative isolate -z-10 pt-14">
+        <div id="inicio" className="relative isolate -z-10 pt-24">
           <div
             aria-hidden="true"
             className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -161,7 +156,7 @@ export default function HomePage() {
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a
                   href="#contato"
-                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-md bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Agende uma reunião
                 </a>
@@ -215,7 +210,7 @@ export default function HomePage() {
             {services.map((service) => (
               <div key={service.name}>
                 <dt className="font-semibold text-gray-900">
-                  <div className="mb-6 flex size-10 items-center justify-center rounded-lg bg-indigo-600">
+                  <div className="mb-6 flex size-10 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 shadow-lg">
                     <service.icon className="size-6 text-white" aria-hidden="true" />
                   </div>
                   {service.name}
@@ -238,7 +233,7 @@ export default function HomePage() {
               <div key={testimonial.name} className="flex flex-col rounded-2xl bg-gray-50 p-8">
                 <p className="text-base/7 text-gray-900">&ldquo;{testimonial.content}&rdquo;</p>
                 <div className="mt-6 flex items-center gap-x-4">
-                  <div className="size-12 rounded-full bg-indigo-600" />
+                  <div className="size-12 rounded-full bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600" />
                   <div>
                     <div className="text-base font-semibold text-gray-900">{testimonial.name}</div>
                     <div className="text-sm/6 text-gray-600">{testimonial.role}</div>
@@ -273,7 +268,7 @@ export default function HomePage() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
                 href="#contato"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="rounded-md bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Agende uma reunião
               </a>

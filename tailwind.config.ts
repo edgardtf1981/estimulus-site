@@ -21,6 +21,14 @@ const config: Config = {
           800: '#3730a3',
           900: '#312e81',
         },
+        brand: {
+          indigo: '#4f46e5',
+          purple: '#9333ea',
+          pink: '#ec4899',
+        },
+      },
+      backgroundImage: {
+        'gradient-brand': 'linear-gradient(to right, #4f46e5, #9333ea, #ec4899)',
       },
     },
   },
