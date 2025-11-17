@@ -7,18 +7,24 @@
 ✅ **Arquivos antigos removidos**
 ✅ **README atualizado**
 
+## ✅ Remote Configurado
+
+O remote `origin` já está configurado:
+```
+origin  https://github.com/edgardtf/estimulus-site.git
+```
+
 ## Próximos Passos
 
-### Opção 1: Usando GitHub CLI (Recomendado)
+### Opção 1: Criar via Script (Recomendado)
 
-Se você tem o GitHub CLI instalado:
+Se você tem um Personal Access Token do GitHub:
 
-```bash
-# Criar repositório no GitHub
-gh repo create estimulus-site --public --source=. --remote=origin --push
+```powershell
+# Obter token em: https://github.com/settings/tokens
+# Permissões necessárias: repo
 
-# Ou se preferir privado:
-gh repo create estimulus-site --private --source=. --remote=origin --push
+.\scripts\create-github-repo.ps1 -GitHubToken "seu_token_aqui"
 ```
 
 ### Opção 2: Criar Manualmente no GitHub
