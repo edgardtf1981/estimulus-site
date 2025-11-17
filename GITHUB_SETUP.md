@@ -14,37 +14,44 @@ O remote `origin` já está configurado:
 origin  https://github.com/edgardtf/estimulus-site.git
 ```
 
-## Próximos Passos
+⚠️ **IMPORTANTE:** O repositório ainda não existe no GitHub. Você precisa criá-lo primeiro.
 
-### Opção 1: Criar via Script (Recomendado)
+## 🚀 Criar Repositório e Fazer Push
 
-Se você tem um Personal Access Token do GitHub:
+### Passo 1: Criar o Repositório no GitHub
+
+1. **Acesse:** https://github.com/new
+2. **Nome do repositório:** `estimulus-site`
+3. **Descrição (opcional):** Site institucional da Estimulus
+4. **Visibilidade:** Escolha Público ou Privado
+5. **⚠️ NÃO marque** "Add a README file" (já temos um)
+6. **⚠️ NÃO marque** "Add .gitignore" (já temos um)
+7. **⚠️ NÃO marque** "Choose a license"
+8. **Clique em:** "Create repository"
+
+### Passo 2: Fazer Push
+
+Após criar o repositório, execute:
+
+```powershell
+git push -u origin master
+```
+
+Ou use o script:
+
+```powershell
+.\scripts\push-to-github.ps1
+```
+
+### Alternativa: Criar via API (se tiver token)
+
+Se você tem um Personal Access Token válido:
 
 ```powershell
 # Obter token em: https://github.com/settings/tokens
 # Permissões necessárias: repo
 
 .\scripts\create-github-repo.ps1 -GitHubToken "seu_token_aqui"
-```
-
-### Opção 2: Criar Manualmente no GitHub
-
-1. **Acesse** [github.com/new](https://github.com/new)
-2. **Nome do repositório:** `estimulus-site` (ou outro nome de sua preferência)
-3. **Escolha:** Público ou Privado
-4. **NÃO marque** "Initialize with README" (já temos um)
-5. **Clique em** "Create repository"
-
-Depois, execute:
-
-```bash
-# Adicionar remote
-git remote add origin https://github.com/SEU_USUARIO/estimulus-site.git
-
-# Ou usando SSH (se configurado):
-git remote add origin git@github.com:SEU_USUARIO/estimulus-site.git
-
-# Fazer push
 git push -u origin master
 ```
 
