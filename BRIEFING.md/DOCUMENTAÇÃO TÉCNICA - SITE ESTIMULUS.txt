@@ -1,0 +1,775 @@
+DOCUMENTAÇÃO TÉCNICA - SITE ESTIMULUS
+🎯 PROMPT PARA IDE / AI CODING ASSISTANT
+# BRIEFING TÉCNICO - WEBSITE ESTIMULUS
+
+## CONTEXTO
+Desenvolver uma landing page de alta conversão para consultoria de marketing ESTIMULUS, 
+focada em PMEs brasileiras. O objetivo principal é VENDER serviços de fidelização de 
+clientes através da metodologia FINX 360.
+
+## STACK TECNOLÓGICO RECOMENDADO
+- Framework: Next.js 14+ (App Router)
+- Estilização: Tailwind CSS
+- Animações: Framer Motion
+- Formulários: React Hook Form + Zod
+- Analytics: Google Analytics 4 + Facebook Pixel
+- Hospedagem: Vercel
+- CMS (Blog): Contentful ou Sanity.io
+
+## ARQUITETURA DE PASTAS
+
+/app
+/page.tsx (Homepage)
+/blog
+/page.tsx (Lista de posts)
+/[slug]/page.tsx (Post individual)
+/calculadoras
+/cac/page.tsx
+/ltv/page.tsx
+/roi/page.tsx
+/churn/page.tsx
+/raio-x/page.tsx
+/segmentos
+/varejo/page.tsx
+/servicos/page.tsx
+/ecommerce/page.tsx
+/precos/page.tsx
+/mentorias/page.tsx
+/finx-360/page.tsx
+/cursos/page.tsx
+/contato/page.tsx
+
+/components
+/sections
+/Hero.tsx
+/DorSection.tsx
+/SolucaoFinx.tsx
+/ProvaSocial.tsx
+/ComoFunciona.tsx
+/Calculadoras.tsx
+/Ofertas.tsx
+/Segmentos.tsx
+/UrgenciaFinal.tsx
+/TrustBar.tsx
+/ui
+/Button.tsx
+/Card.tsx
+/Input.tsx
+/Modal.tsx
+/layout
+/Header.tsx
+/Footer.tsx
+/calculators
+/CACCalculator.tsx
+/LTVCalculator.tsx
+/ROICalculator.tsx
+/ChurnCalculator.tsx
+
+/lib
+/utils.ts
+/analytics.ts
+/api.ts
+
+/public
+/images
+/videos
+/fonts
+
+/styles
+/globals.css
+
+## ESTRUTURA DA HOMEPAGE - SEÇÃO POR SEÇÃO
+
+### 1. HERO SECTION
+```tsx
+// Componente: Hero.tsx
+// Posição: Primeira dobra (above the fold)
+// Altura: 100vh (mobile: 90vh)
+
+Elementos:
+- Background: Vídeo loop ou imagem hero de alta qualidade
+- Headline Principal: 
+  * Texto: "VENDA MAIS. FAÇA SEU MARKETING TRABALHAR POR VOCÊ."
+  * Tamanho: text-6xl md:text-8xl
+  * Peso: font-bold
+  * Cor: text-white
+  * Animação: Fade in + slide up (Framer Motion)
+
+- Subheadline:
+  * Texto: "Transforme clientes esquecidos em fãs que compram de novo. Método comprovado para PMEs que querem crescer de verdade."
+  * Tamanho: text-xl md:text-2xl
+  * Cor: text-gray-200
+  * Animação: Fade in com delay 0.3s
+
+- CTAs (2 botões lado a lado):
+  Botão 1 (Principal):
+    * Texto: "DESCUBRA SEU POTENCIAL DE VENDAS"
+    * Estilo: bg-orange-500 hover:bg-orange-600
+    * Tamanho: px-8 py-4 text-lg
+    * Ação: Scroll suave para seção de Raio-X ou Modal
+  
+  Botão 2 (Secundário):
+    * Texto: "Ver Como Funciona ↓"
+    * Estilo: border-2 border-white text-white hover:bg-white/10
+    * Ação: Scroll suave para próxima seção
+
+- Contador Animado:
+  * Posição: Canto inferior direito
+  * Texto: "R$ 2.347.890 gerados para clientes em 2024"
+  * Animação: CountUp de 0 até o valor
+  * Biblioteca: react-countup
+
+Responsividade:
+- Mobile: Stack vertical, botões full-width
+- Desktop: Conteúdo centralizado, max-width-5xl
+
+2. DOR SECTION
+// Componente: DorSection.tsx
+// Background: bg-white
+// Padding: py-20 md:py-32
+
+Estrutura:
+- Título centralizado:
+  * Texto: "Sua empresa tem esse problema?"
+  * Tamanho: text-4xl md:text-5xl font-bold
+  * Cor: text-gray-900
+
+- Grid de 3 Cards:
+  Layout: grid grid-cols-1 md:grid-cols-3 gap-8
+  
+  Card 1:
+    * Ícone: 🔥 (tamanho: text-6xl)
+    * Título: "Cliente compra 1x e some"
+    * Subtítulo: "Não tem sistema de retenção"
+    * Estilo: bg-red-50 border-2 border-red-200 hover:shadow-xl
+    * Animação: Hover scale 1.05
+  
+  Card 2:
+    * Ícone: 💸
+    * Título: "Gasta em anúncio e não lucra"
+    * Subtítulo: "CAC maior que o lucro"
+    * Estilo: bg-orange-50 border-2 border-orange-200
+  
+  Card 3:
+    * Ícone: 📉
+    * Título: "Vendas oscilam todo mês"
+    * Subtítulo: "Faturamento imprevisível"
+    * Estilo: bg-yellow-50 border-2 border-yellow-200
+
+- CTA abaixo:
+  * Texto: "Veja quanto isso custa para você →"
+  * Link para: /calculadoras
+  * Estilo: text-orange-600 font-semibold hover:text-orange-700
+
+3. SOLUÇÃO FINX
+// Componente: SolucaoFinx.tsx
+// Background: bg-gradient-to-b from-blue-900 to-blue-950
+// Cor texto: text-white
+
+Estrutura:
+- Título:
+  * Texto: "FINX 360: O método que faz cliente voltar"
+  * Centralizado, text-4xl md:text-5xl
+
+- Grid 2x2 dos Pilares:
+  Layout: grid grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto
+  
+  Cada Card Interativo:
+    * Tamanho: aspect-square
+    * Background: bg-white/10 backdrop-blur
+    * Border: border-2 border-white/20
+    * Hover: bg-white/20 + scale 1.05
+    * Transição: transition-all duration-300
+    
+    Conteúdo de cada card:
+    
+    Card F:
+      * Letra: F (text-6xl font-bold)
+      * Título: FIDELIZAÇÃO
+      * Descrição: "Cliente compra de novo"
+    
+    Card I:
+      * Letra: I
+      * Título: IA + DADOS
+      * Descrição: "Decisão baseada em números"
+    
+    Card N:
+      * Letra: N
+      * Título: NEUROMARKETING
+      * Descrição: "Vendas que convencem"
+    
+    Card X:
+      * Letra: X
+      * Título: EXPERIÊNCIA
+      * Descrição: "Cliente vira vendedor"
+
+- Copy rodapé:
+  * Texto: "Ciência + Estratégia = Mais vendas com os mesmos clientes"
+  * Centralizado, text-lg
+
+- CTA:
+  * Botão: "Quero aplicar na minha empresa"
+  * Link para: /finx-360 ou /contato
+
+4. PROVA SOCIAL
+// Componente: ProvaSocial.tsx
+// Background: bg-gray-50
+
+Estrutura:
+- Título: "Resultados reais de quem usa"
+
+- Carrossel ou Grid de 3 Cards:
+  
+  Card Case:
+    * Estrutura vertical
+    * Background: bg-white
+    * Shadow: shadow-lg hover:shadow-2xl
+    * Padding: p-8
+    
+    Elementos:
+    1. Badge superior: "VAREJO" / "SERVIÇOS" / "E-COMMERCE"
+    2. Título da empresa: "LOJA DE ROUPAS - SP"
+    3. Resultado GRANDE (destaque):
+       * Número: text-5xl font-bold text-green-600
+       * Ex: "+ 120K"
+    4. Subtítulo: "em 12 meses"
+    5. Tag inferior: "Fidelização + Retenção"
+    
+    Animação: Fade in on scroll (Intersection Observer)
+
+- CTA inferior:
+  * Botão: "Quero resultados assim"
+
+5. COMO FUNCIONA
+// Componente: ComoFunciona.tsx
+// Layout: Timeline horizontal
+
+Estrutura:
+- Título: "3 passos para vender mais"
+
+- Timeline (3 steps):
+  Layout desktop: Flex horizontal com conectores
+  Layout mobile: Vertical stack
+  
+  Step Card:
+    * Número grande: "1️⃣" / "2️⃣" / "3️⃣"
+    * Título: "DIAGNÓSTICO" / "IMPLEMENTAÇÃO" / "RESULTADOS"
+    * Lista de 3 bullets
+    * Seta conectora entre steps (→)
+  
+  Estilos:
+    * bg-white border-2 border-gray-200
+    * Hover: border-blue-500
+    * Número: text-6xl
+    * Conector: SVG seta animada
+
+- CTA: "Começar diagnóstico grátis"
+  Link: /raio-x
+
+6. CALCULADORAS WIDGET
+// Componente: Calculadoras.tsx
+// Funcionalidade: Modal ou Inline Cards
+
+Estrutura:
+- Título: "Descubra quanto você está perdendo"
+
+- Grid de 4 Cards clicáveis:
+  Layout: grid-cols-2 md:grid-cols-4
+  
+  Card Calculadora:
+    * Ícone representativo
+    * Título: "CAC" / "LTV" / "ROI" / "CHURN"
+    * Subtítulo explicativo (1 linha)
+    * Botão: "Calcular"
+    * Ação: Abre modal com calculadora específica
+  
+  Modal Calculadora:
+    * Inputs: 2-4 campos numéricos
+    * Botão calcular: Animação de loading
+    * Resultado: Número grande + interpretação (emoji + texto)
+    * CTA: "Viu o problema? Fale com especialista"
+    * Link: /contato
+
+Calculadoras específicas:
+1. CAC: (Investimento em marketing / Clientes novos)
+2. LTV: (Ticket médio × Compras/ano × Anos)
+3. ROI: ((Receita - Investimento) / Investimento × 100)
+4. Churn: (Clientes perdidos / Total de clientes × 100)
+
+7. OFERTAS
+// Componente: Ofertas.tsx
+// Background: bg-white
+
+Estrutura:
+- Título: "Escolha como crescer"
+
+- Grid 2x2 de Cards de Produto:
+  Layout: grid grid-cols-1 md:grid-cols-2 gap-8
+  
+  Card Oferta (estrutura padrão):
+    * Header: Nome do produto
+    * Body: 
+      - Descrição curta (2 linhas)
+      - Preço (destaque)
+    * Footer: CTA button
+    * Estilo: border-2 hover:border-blue-500 hover:shadow-xl
+  
+  Oferta 1 - MENTORIA:
+    * Descrição: "2h com especialista"
+    * Preço: "R$ 1.490"
+    * CTA: "Agendar Agora" → /mentorias
+  
+  Oferta 2 - FINX 360:
+    * Badge: "MAIS POPULAR"
+    * Descrição: "A gente faz tudo"
+    * Preço: "R$ 4.900/mês"
+    * CTA: "Solicitar Proposta" → /finx-360
+  
+  Oferta 3 - CURSOS:
+    * Descrição: "Aprenda o método"
+    * Preço: "A partir R$ 997"
+    * CTA: "Ver Cursos" → /cursos
+  
+  Oferta 4 - CRIAÇÃO:
+    * Descrição: "Executamos pra você"
+    * Preço: "Sob consulta"
+    * CTA: "Pedir Orçamento" → /contato
+
+8. SEGMENTOS
+// Componente: Segmentos.tsx
+// Layout: Cards grandes com imagem de fundo
+
+Estrutura:
+- Título: "Soluções para seu tipo de negócio"
+
+- 3 Cards Hero:
+  Layout: grid grid-cols-1 md:grid-cols-3 gap-8
+  
+  Card Segmento:
+    * Background: Imagem (overlay escuro)
+    * Altura: h-96
+    * Conteúdo overlay:
+      - Badge: "VAREJO" / "SERVIÇOS" / "E-COMMERCE"
+      - Headline provocativa
+      - Promessa (1 linha)
+      - Link: "Ver solução →"
+    * Hover: Overlay mais escuro + scale da imagem
+  
+  Segmento 1 - VAREJO:
+    * Imagem: Loja física
+    * Headline: "Cliente compra e não volta?"
+    * Promessa: "Resolva isso em 90 dias."
+    * Link: /segmentos/varejo
+  
+  Segmento 2 - SERVIÇOS:
+    * Imagem: Restaurante ou clínica
+    * Headline: "Agenda vazia no meio do mês?"
+    * Promessa: "Preencha com clientes fiéis."
+    * Link: /segmentos/servicos
+  
+  Segmento 3 - E-COMMERCE:
+    * Imagem: Pacotes/logística
+    * Headline: "CAC alto, LTV baixo?"
+    * Promessa: "Inverta o jogo."
+    * Link: /segmentos/ecommerce
+
+9. URGÊNCIA FINAL
+// Componente: UrgenciaFinal.tsx
+// Background: bg-gradient-to-r from-red-900 to-orange-900
+// Cor: text-white
+
+Estrutura:
+- Headline impactante:
+  * "Cada dia perdido é dinheiro deixado na mesa"
+  * text-5xl md:text-6xl font-bold
+  
+- Copy (3 linhas, espaçadas):
+  * Line 1: "Seus concorrentes já estão fidelizando."
+  * Line 2: "Enquanto você pensa, eles estão lucrando com clientes que eram seus."
+  * Line 3: "Não deixe para amanhã." (bold)
+
+- CTA gigante centralizado:
+  * Botão: "FAZER RAIO-X GRATUITO AGORA"
+  * Tamanho: px-12 py-6 text-2xl
+  * Estilo: bg-white text-red-900 hover:scale-105
+  * Animação: Pulse sutil
+
+- Micro copy abaixo:
+  * "⚡ Leva 5 minutos | 📊 Resultado em 1 hora | 🎯 Sem compromisso"
+  * text-sm text-white/80
+
+10. TRUST BAR
+// Componente: TrustBar.tsx
+// Background: bg-blue-900
+// Cor: text-white
+
+Estrutura:
+- Layout: Flex horizontal (mobile: stack)
+- 4 elementos com ícones:
+  * "✓ Método cientificamente comprovado"
+  * "✓ +500 empresas transformadas"
+  * "✓ R$ 50mi+ em vendas geradas"
+  * "✓ Garantia de 90 dias"
+- Animação: Fade in on scroll
+
+HEADER (Fixo)
+// Componente: Header.tsx
+// Posição: fixed top-0 w-full z-50
+// Background: bg-white/95 backdrop-blur
+// Shadow: shadow-md
+
+Estrutura:
+- Logo (esquerda): Link para /
+- Menu (centro):
+  * Links: Blog | Calculadoras | Raio-X | Preços
+  * Hover: text-orange-600
+- CTA (direita):
+  * Botão: "AGENDAR CONSULTA"
+  * Estilo: bg-orange-500 text-white
+
+Mobile:
+- Hamburger menu
+- Slide-in lateral
+
+FOOTER
+// Componente: Footer.tsx
+// Background: bg-gray-900
+// Cor: text-gray-300
+
+Estrutura 3 colunas:
+1. Links Rápidos (Mentorias, FINX 360, Cursos, etc)
+2. Contato (WhatsApp, Email, Telefone)
+3. CTA Final + Trust Signals
+
+Bottom: Copyright + Social links
+
+FUNCIONALIDADES INTERATIVAS
+Pop-ups Estratégicos
+// lib/popups.ts
+
+1. Exit Intent:
+   - Trigger: Mouse sai da viewport
+   - Delay: Após 10s na página
+   - Conteúdo: Mini-oferta Raio-X
+   - Frequência: 1x por sessão
+
+2. Scroll Trigger (50%):
+   - Trigger: Scroll atinge 50% da página
+   - Conteúdo: Chat ao vivo
+   - Estilo: Bottom-right bubble
+
+3. Time Trigger (45s):
+   - Trigger: 45s na página
+   - Conteúdo: Calculadora rápida Churn
+   - Estilo: Modal central
+
+Animações (Framer Motion)
+// Padrões de animação:
+
+fadeInUp:
+  initial: { opacity: 0, y: 20 }
+  animate: { opacity: 1, y: 0 }
+  transition: { duration: 0.6 }
+
+scaleOnHover:
+  whileHover: { scale: 1.05 }
+  transition: { duration: 0.3 }
+
+staggerChildren:
+  staggerChildren: 0.1
+  delayChildren: 0.2
+
+INTEGRAÇÕES NECESSÁRIAS
+Analytics
+// lib/analytics.ts
+
+- Google Analytics 4
+  * Events: page_view, button_click, form_submit, calculator_use
+  * Conversions: lead_generation, consultation_booking
+
+- Facebook Pixel
+  * Standard events: ViewContent, Lead, Schedule
+
+- Hotjar
+  * Heatmaps
+  * Session recordings
+  * Funnel analysis
+
+Formulários
+// Integração com:
+- React Hook Form (validação)
+- Zod (schema validation)
+- API endpoint: /api/lead
+- Webhook: Enviar para CRM (RD Station, HubSpot, etc)
+
+OTIMIZAÇÕES DE PERFORMANCE
+Imagens
+// Usar Next.js Image component
+import Image from 'next/image'
+
+- Formato: WebP com fallback
+- Lazy loading
+- Sizes responsivos
+- Blur placeholder
+
+Fonts
+// Usar next/font
+import { Montserrat, Inter } from 'next/font/google'
+
+const montserrat = Montserrat({ 
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800'],
+  display: 'swap'
+})
+
+SEO
+// metadata em cada page.tsx
+export const metadata = {
+  title: 'Estimulus - Fidelização de Clientes que Gera Lucro',
+  description: 'Metodologia FINX 360 para PMEs...',
+  openGraph: {
+    images: ['/og-image.jpg'],
+  },
+}
+
+RESPONSIVIDADE - BREAKPOINTS
+/* Tailwind breakpoints: */
+sm: 640px   (mobile landscape)
+md: 768px   (tablet)
+lg: 1024px  (desktop)
+xl: 1280px  (large desktop)
+2xl: 1536px (extra large)
+
+/* Prioridade: Mobile-first */
+
+PALETA DE CORES (Tailwind Config)
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        'estimulus-blue': {
+          900: '#0A2463',
+          950: '#071a47',
+        },
+        'estimulus-orange': {
+          500: '#FB8500',
+          600: '#e67700',
+        },
+        'estimulus-green': {
+          600: '#06A77D',
+        },
+      },
+    },
+  },
+}
+
+CHECKLIST DE IMPLEMENTAÇÃO
+[ ] Setup Next.js 14 com App Router
+[ ] Configurar Tailwind CSS
+[ ] Instalar Framer Motion
+[ ] Criar componentes base (Button, Card, Input)
+[ ] Implementar Header e Footer
+[ ] Desenvolver seções da Homepage (1-10)
+[ ] Criar páginas de Calculadoras (4 páginas)
+[ ] Desenvolver página Raio-X
+[ ] Criar páginas de Segmentos (3 páginas)
+[ ] Implementar páginas de Produtos (Mentorias, FINX, Cursos)
+[ ] Página de Preços
+[ ] Página de Contato com formulário
+[ ] Setup Blog (CMS integration)
+[ ] Implementar Pop-ups estratégicos
+[ ] Adicionar animações
+[ ] Integrar Analytics (GA4 + Facebook Pixel)
+[ ] Testes de responsividade
+[ ] Otimização de performance (Lighthouse)
+[ ] SEO on-page
+[ ] Deploy na Vercel
+ESTRUTURA DE DADOS - TYPES
+// types/index.ts
+
+export interface LeadForm {
+  nome: string
+  email: string
+  telefone: string
+  empresa: string
+  faturamento: string
+  interesse: 'mentoria' | 'finx360' | 'cursos' | 'criacao'
+}
+
+export interface CalculatorResult {
+  value: number
+  interpretation: 'critico' | 'alerta' | 'saudavel'
+  message: string
+  recommendation: string
+}
+
+export interface CaseStudy {
+  id: string
+  segmento: 'varejo' | 'servicos' | 'ecommerce'
+  empresa: string
+  localizacao: string
+  resultado: string
+  metrica: string
+  tags: string[]
+}
+
+export interface BlogPost {
+  slug: string
+  title: string
+  excerpt: string
+  content: string
+  publishedAt: string
+  author: string
+  category: string
+  featuredImage: string
+}
+
+EXEMPLO DE COMPONENT
+// components/sections/Hero.tsx
+
+'use client'
+
+import { motion } from 'framer-motion'
+import { Button } from '@/components/ui/Button'
+
+export function Hero() {
+  const scrollToRaioX = () => {
+    document.getElementById('raio-x')?.scrollIntoView({ 
+      behavior: 'smooth' 
+    })
+  }
+
+  return (
+    <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 to-blue-950 overflow-hidden">
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-20"
+      >
+        <source src="/videos/hero-bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-6xl md:text-8xl font-bold text-white mb-6"
+        >
+          VENDA MAIS.
+          <br />
+          FAÇA SEU MARKETING TRABALHAR POR VOCÊ.
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto"
+        >
+          Transforme clientes esquecidos em fãs que compram de novo.
+          Método comprovado para PMEs que querem crescer de verdade.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="flex flex-col md:flex-row gap-4 justify-center"
+        >
+          <Button
+            size="lg"
+            variant="primary"
+            onClick={scrollToRaioX}
+          >
+            DESCUBRA SEU POTENCIAL DE VENDAS
+          </Button>
+          
+          <Button
+            size="lg"
+            variant="outline"
+            onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+          >
+            Ver Como Funciona ↓
+          </Button>
+        </motion.div>
+
+        {/* Contador Animado */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute bottom-8 right-8 bg-white/10 backdrop-blur-md px-6 py-3 rounded-lg"
+        >
+          <p className="text-white text-sm">
+            <span className="font-bold text-orange-500">R$ 2.347.890</span> gerados para clientes em 2024
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+API ENDPOINTS
+// app/api/lead/route.ts
+export async function POST(request: Request) {
+  const body = await request.json()
+  
+  // Validação
+  // Salvar no banco
+  // Enviar para CRM
+  // Enviar email de confirmação
+  
+  return Response.json({ success: true })
+}
+
+// app/api/calculate/[type]/route.ts
+export async function POST(request: Request, { params }) {
+  const { type } = params // 'cac' | 'ltv' | 'roi' | 'churn'
+  const body = await request.json()
+  
+  // Lógica de cálculo
+  // Retornar resultado + interpretação
+  
+  return Response.json({ result, interpretation, message })
+}
+
+COMANDOS DE INSTALAÇÃO
+# Criar projeto Next.js
+npx create-next-app@latest estimulus-site --typescript --tailwind --app
+
+# Instalar dependências
+npm install framer-motion react-hook-form zod @hookform/resolvers
+npm install react-countup react-intersection-observer
+npm install @radix-ui/react-dialog @radix-ui/react-dropdown-menu
+npm install lucide-react # ícones
+
+# Dev dependencies
+npm install -D @types/node @types/react
+
+MÉTRICAS DE SUCESSO
+// Objetivos de Performance:
+- Lighthouse Score: 90+ (todas as categorias)
+- First Contentful Paint: < 1.5s
+- Time to Interactive: < 3s
+- Cumulative Layout Shift: < 0.1
+
+// Objetivos de Conversão:
+- Taxa de conversão geral: 3-5%
+- Taxa de clique em CTAs: 15-20%
+- Taxa de preenchimento Raio-X: 8-12%
+- Taxa de agendamento: 2-3%
+- Bounce rate: < 40%
+- Tempo médio na página: 90-120s
+
+DEPLOY
+# Vercel (recomendado)
+vercel
+
+# Ou conectar repo GitHub com Vercel
+# Auto-deploy em cada push para main

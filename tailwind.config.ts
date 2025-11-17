@@ -22,16 +22,25 @@ const config: Config = {
           900: '#312e81',
         },
         brand: {
-          navy: '#2A3B95',
-          purple: '#5D2C9D',
-          teal: '#008C9E',
-          gray: '#B8B8B8',
-          white: '#ffffff',
+          'azul-marinho': '#2A3B95',
+          'roxo-escuro': '#5D2C9D',
+          'azul-petroleo': '#2A3B95',
+          'cinza-claro': '#B8B8B8',
+          'branco': '#ffffff',
+        },
+        'estimulus': {
+          primary: '#2A3B95',      // Azul Marinho
+          secondary: '#5D2C9D',    // Roxo Escuro
+          accent: '#2A3B95',        // Azul Marinho (substituído)
+          gray: '#B8B8B8',          // Cinza Claro
+          white: '#ffffff',          // Branco
         },
       },
       backgroundImage: {
-        'gradient-brand': 'linear-gradient(to right, #2A3B95, #5D2C9D, #008C9E)',
-        'gradient-mesh': 'radial-gradient(at 0% 0%, rgba(42, 59, 149, 0.1) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(93, 44, 157, 0.1) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(0, 140, 158, 0.1) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(42, 59, 149, 0.1) 0px, transparent 50%)',
+        'gradient-brand': 'linear-gradient(to right, #2A3B95, #5D2C9D, #2A3B95)',
+        'gradient-brand-horizontal': 'linear-gradient(to right, #2A3B95, #5D2C9D)',
+        'gradient-brand-vertical': 'linear-gradient(to bottom, #2A3B95, #5D2C9D, #2A3B95)',
+        'gradient-mesh': 'radial-gradient(at 0% 0%, rgba(42, 59, 149, 0.1) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(93, 44, 157, 0.1) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(42, 59, 149, 0.1) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(42, 59, 149, 0.1) 0px, transparent 50%)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

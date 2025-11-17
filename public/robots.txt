@@ -1,0 +1,47 @@
+# robots.txt - Site Estimulus
+# Otimizado para SEO tradicional e Generative Engine Optimization (GEO)
+
+User-agent: *
+Allow: /
+
+# Bots de IA específicos - Permitir acesso completo
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Bloquear áreas administrativas
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://estimulus.com.br/sitemap.xml
+
