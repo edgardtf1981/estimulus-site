@@ -78,26 +78,26 @@ const nextConfig = {
     ];
   },
 
-  // Webpack customization - Simplificado para evitar quebrar o runtime
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Apenas configurações essenciais - sem modificar entry points ou runtime
-    if (isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-      };
-    }
+  // Webpack customization - Temporariamente desabilitado para resolver erro de build
+  // webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  //   // Apenas configurações essenciais - sem modificar entry points ou runtime
+  //   if (isServer) {
+  //     config.resolve.fallback = {
+  //       ...config.resolve.fallback,
+  //       fs: false,
+  //       net: false,
+  //       tls: false,
+  //     };
+  //   }
 
-    // Aliases para reduzir tamanho do bundle
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': path.resolve(__dirname, './'),
-    };
+  //   // Aliases para reduzir tamanho do bundle
+  //   config.resolve.alias = {
+  //     ...config.resolve.alias,
+  //     '@': path.resolve(__dirname, './'),
+  //   };
 
-    return config;
-  },
+  //   return config;
+  // },
 
   // Configuração de trailing slash
   trailingSlash: false,
