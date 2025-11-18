@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "@/lib/polyfills"; // Importar polyfills primeiro
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { MonitoringProvider } from "@/components/MonitoringProvider";
 
