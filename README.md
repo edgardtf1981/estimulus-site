@@ -1,5 +1,10 @@
 # Site Estimulus
 
+[![Next.js](https://img.shields.io/badge/Next.js-13-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
 Site institucional da Estimulus desenvolvido com Next.js, TypeScript e Tailwind CSS.
 
 ## 🚀 Tecnologias
@@ -92,4 +97,19 @@ O projeto está configurado com:
 - **PRD/** - Documentação completa do produto
 - **SEO-GEO/** - Estratégias de SEO e geolocalização
 - **VERCEL-DEPLOY/** - Documentação de deploy no Vercel
+- **CHANGELOG.md** - Histórico de mudanças
+- **.github/** - Templates e guias de contribuição
+
+## 🤝 Contribuindo
+
+Contribuições são bem-vindas! Por favor, leia o [Guia de Contribuição](.github/CONTRIBUTING.md) e o [Código de Conduta](.github/CODE_OF_CONDUCT.md) antes de contribuir.
+
+## 📄 Licença
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+## 🔗 Links
+
+- **Repositório:** https://github.com/edgardtf1981/estimulus-site
+- **Issues:** https://github.com/edgardtf1981/estimulus-site/issues
 
