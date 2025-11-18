@@ -1,5 +1,5 @@
 {
-  "name": "estimulus-site",
+  "name": "estimulus-site-novo",
   "version": "0.1.0",
   "description": "Site institucional da Estimulus desenvolvido com Next.js, TypeScript e Tailwind CSS",
   "private": true,
@@ -25,6 +25,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "vercel-build": "node vercel-build-fix.js",
     "start": "next start",
     "lint": "next lint",
     "precheck": "node scripts/precheck.js",

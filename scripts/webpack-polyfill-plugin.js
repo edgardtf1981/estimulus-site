@@ -16,10 +16,19 @@ class SelfPolyfillPlugin {
               const source = asset.source();
               if (typeof source === 'string') {
                 let newSource = source;
-                // Substituir self.webpackChunk por globalThis.webpackChunk
+                
+                // Adicionar polyfill no início do arquivo se não existir
+                if (!newSource.includes('global.self') && !newSource.includes('globalThis.self')) {
+                  const polyfill = `(function(){if(typeof global!=='undefined'&&typeof global.self==='undefined'){global.self=global;}if(typeof globalThis!=='undefined'&&typeof globalThis.self==='undefined'){globalThis.self=globalThis;}})();`;
+                  newSource = polyfill + '\n' + newSource;
+                }
+                
+                // Substituir referências a self
                 newSource = newSource.replace(/self\.webpackChunk/g, 'globalThis.webpackChunk');
                 newSource = newSource.replace(/\(self\./g, '(globalThis.');
                 newSource = newSource.replace(/\bself\b(?=\s*\.)/g, 'globalThis');
+                // Substituir self sozinho (quando não é propriedade)
+                newSource = newSource.replace(/\bself\b(?!\s*[\.=])/g, '(typeof self !== "undefined" ? self : globalThis)');
                 
                 if (newSource !== source) {
                   compilation.updateAsset(filename, new sources.RawSource(newSource));

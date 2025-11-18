@@ -1,9 +1,19 @@
 const path = require('path');
 const webpack = require('webpack');
 
-// Polyfill global para 'self' no servidor - executado antes do webpack
-if (typeof globalThis !== 'undefined' && typeof globalThis.self === 'undefined') {
-  globalThis.self = globalThis;
+// Polyfill global para 'self' no servidor - executado ANTES de qualquer coisa
+// Isso deve ser definido no nível mais alto possível
+if (typeof global !== 'undefined') {
+  if (typeof global.self === 'undefined') {
+    global.self = global;
+  }
+  if (typeof globalThis !== 'undefined' && typeof globalThis.self === 'undefined') {
+    globalThis.self = globalThis;
+  }
+  // Garantir que self existe em todos os contextos
+  if (typeof self === 'undefined') {
+    global.self = global;
+  }
 }
 
 /** @type {import('next').NextConfig} */
@@ -98,19 +108,27 @@ const nextConfig = {
       };
     }
 
-    // Definir variáveis globais para compatibilidade
-    config.plugins.push(
-      new webpack.DefinePlugin({
-        'typeof self': JSON.stringify(isServer ? 'undefined' : 'object'),
-        'typeof window': JSON.stringify(isServer ? 'undefined' : 'object'),
-      })
-    );
-
-    // Para servidor: usar plugin customizado para substituir self por globalThis
+    // Para servidor: injetar self via ProvidePlugin ANTES de tudo
     if (isServer) {
+      // ProvidePlugin injeta automaticamente 'self' quando usado no código
+      config.plugins.push(
+        new webpack.ProvidePlugin({
+          'self': 'globalThis',
+        })
+      );
+      
+      // Plugin customizado para substituir self por globalThis no código gerado
       const SelfPolyfillPlugin = require('./scripts/webpack-polyfill-plugin');
       config.plugins.push(new SelfPolyfillPlugin());
     }
+
+    // Definir variáveis globais para compatibilidade
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        'typeof self': JSON.stringify(isServer ? 'object' : 'object'),
+        'typeof window': JSON.stringify(isServer ? 'undefined' : 'object'),
+      })
+    );
 
     // Otimizações de bundle
     config.optimization.splitChunks = {
