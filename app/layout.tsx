@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { MonitoringProvider } from "@/components/MonitoringProvider";
+import { VercelAnalytics } from "@/components/VercelAnalytics";
 
 export const metadata: Metadata = {
   title: "Como Aumentar Vendas com Fidelização de Clientes para PME | Estimulus",
@@ -117,6 +118,7 @@ export default function RootLayout({
             {children}
           </MonitoringProvider>
         </ThemeProvider>
+        <VercelAnalytics />
       </body>
     </html>
   );
