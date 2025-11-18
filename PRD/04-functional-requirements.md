@@ -1,5 +1,8 @@
 # ✅ Functional Requirements
 
+**Última atualização:** 2025-11-17  
+**Status:** ✅ Todas as funcionalidades implementadas
+
 ## Funcionalidades Principais
 
 ### 1. Sistema de Calculadoras de Métricas

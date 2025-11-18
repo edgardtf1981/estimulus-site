@@ -2,7 +2,7 @@
 
 Este índice organiza toda a documentação do projeto Site Estimulus para facilitar consultas e manutenção.
 
-**Última atualização:** 2024-12-19
+**Última atualização:** 2025-11-17
 
 ---
 
@@ -134,5 +134,5 @@ Este índice organiza toda a documentação do projeto Site Estimulus para facil
 Para dúvidas sobre a documentação ou sugestões de melhoria, consulte a equipe de desenvolvimento.
 
 **Mantenedor do PRD:** Equipe Estimulus  
-**Última revisão:** 2024-12-19
+**Última revisão:** 2025-11-17
 

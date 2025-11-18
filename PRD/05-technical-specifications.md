@@ -3,14 +3,15 @@
 ## Arquitetura do Sistema
 
 ### Stack Tecnológico
-- **Frontend:** Next.js 14 (App Router), React 18, TypeScript
-- **Estilização:** Tailwind CSS 3.4+
-- **Animações:** Framer Motion 12+
-- **Formulários:** React Hook Form (futuro), validação nativa
-- **Email:** Nodemailer 7+
-- **Deployment:** Vercel
-- **Monitoring:** Vercel Analytics, Sentry (futuro)
+- **Frontend:** Next.js 14.2.33 (App Router), React 18.3.1, TypeScript 5.5.4
+- **Estilização:** Tailwind CSS 3.4.18
+- **UI Components:** @headlessui/react 1.7.18, @heroicons/react 2.1.1
+- **Formulários:** Validação nativa implementada
+- **Email:** Nodemailer 7.0.10
+- **Deployment:** Vercel (configurado)
+- **Monitoring:** Vercel Speed Insights 1.2.0, Vercel Analytics
 - **CMS:** JSON-based (blog-posts.json)
+- **Segurança:** Rate limiting, CSP, Permissions-Policy, Logging seguro
 
 ### Componentes do Sistema
 
@@ -95,8 +96,10 @@ Response Error (400):
 - Sanitização de todos os inputs
 
 **Rate Limiting:**
-- Máximo 3 requisições por hora por IP
-- Headers: `X-RateLimit-Remaining`, `X-RateLimit-Reset`
+- ✅ **Implementado:** Máximo 3 requisições por hora por IP
+- ✅ **Headers:** `X-RateLimit-Remaining`, `X-RateLimit-Reset`, `Retry-After`
+- ✅ **Arquivo:** `lib/rate-limit.ts`
+- ✅ **Status:** Funcionando em produção
 
 #### 2. Formulário de Contato (Futuro)
 ```typescript
@@ -237,48 +240,72 @@ Sentry.init({
 
 ## Segurança
 
-### Input Sanitization
+### ✅ Implementações de Segurança (Atualizado: 2025-11-17)
+
+#### Input Sanitization
 ```typescript
-// lib/sanitize.ts
-export function sanitizeString(input: string): string {
-  // Remove HTML tags
-  let sanitized = input.replace(/<[^>]*>/g, '');
-  // Remove javascript: protocol
-  sanitized = sanitized.replace(/javascript:/gi, '');
-  // Remove event handlers
-  sanitized = sanitized.replace(/on\w+="[^"]*"/gi, '');
-  // Limit length
-  return sanitized.substring(0, 10000);
+// app/api/raio-x/route.ts
+function sanitizeString(str: string): string {
+  if (typeof str !== 'string') return ''
+  return str
+    .replace(/[<>]/g, '') // Remove < e >
+    .replace(/javascript:/gi, '') // Remove javascript:
+    .replace(/on\w+=/gi, '') // Remove event handlers
+    .trim()
+    .substring(0, 1000) // Limita tamanho
 }
 ```
+- ✅ **Status:** Implementado e funcionando
+- ✅ **Localização:** `app/api/raio-x/route.ts`
 
-### XSS Prevention
-- Todos os inputs sanitizados antes de uso
-- `dangerouslySetInnerHTML` apenas com conteúdo confiável
-- Content Security Policy headers configurados
+#### XSS Prevention
+- ✅ Todos os inputs sanitizados antes de uso
+- ✅ `dangerouslySetInnerHTML` apenas com conteúdo confiável
+- ✅ Content Security Policy headers configurados
+- ✅ Permissions-Policy header adicionado
+- ✅ `frame-ancestors 'none'` para prevenir clickjacking
 
-### Rate Limiting
+#### Rate Limiting
 ```typescript
-// lib/rateLimit.ts
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-
-export function checkRateLimit(ip: string): boolean {
-  const now = Date.now();
-  const limit = rateLimitMap.get(ip);
-  
-  if (!limit || now > limit.resetTime) {
-    rateLimitMap.set(ip, { count: 1, resetTime: now + 3600000 });
-    return true;
-  }
-  
-  if (limit.count >= 3) {
-    return false;
-  }
-  
-  limit.count++;
-  return true;
-}
+// lib/rate-limit.ts
+export function rateLimit(
+  identifier: string,
+  maxRequests: number = 5,
+  windowMs: number = 60 * 60 * 1000
+): { allowed: boolean; remaining: number; resetTime: number }
 ```
+- ✅ **Status:** Implementado e funcionando
+- ✅ **Limite:** 3 requisições por hora por IP
+- ✅ **Headers:** X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After
+- ✅ **Localização:** `lib/rate-limit.ts`
+
+#### Proteção de Área Administrativa
+- ✅ **Status:** Proteção básica implementada
+- ✅ **Localização:** `middleware.ts`
+- ⚠️ **Nota:** Requer autenticação completa antes de produção
+- ✅ **Comportamento:** Bloqueia acesso em produção sem autenticação
+
+#### Headers de Segurança
+- ✅ Strict-Transport-Security (HSTS)
+- ✅ Content-Security-Policy (CSP melhorado - sem unsafe-eval)
+- ✅ X-Content-Type-Options
+- ✅ X-Frame-Options
+- ✅ X-XSS-Protection
+- ✅ Referrer-Policy
+- ✅ Permissions-Policy
+
+#### Logging Seguro
+- ✅ Logs detalhados apenas em desenvolvimento
+- ✅ Logs em produção não expõem dados sensíveis
+- ✅ Stack traces não expostos em produção
+
+### Análise de Segurança Realizada
+- ✅ **Data:** 2025-11-17
+- ✅ **OWASP Top 10:** Análise completa realizada
+- ✅ **Vulnerabilidades Encontradas:** 8
+- ✅ **Vulnerabilidades Corrigidas:** 5 automaticamente
+- ✅ **Documentação:** `RELATORIO_SEGURANCA_COMPLETO.md`
+- ✅ **Status:** Pronto para produção (com autenticação completa pendente)
 
 ## Performance
 
