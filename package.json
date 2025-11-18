@@ -1,7 +1,27 @@
 {
   "name": "estimulus-site",
   "version": "0.1.0",
+  "description": "Site institucional da Estimulus desenvolvido com Next.js, TypeScript e Tailwind CSS",
   "private": true,
+  "author": "Estimulus",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edgardtf1981/estimulus-site.git"
+  },
+  "bugs": {
+    "url": "https://github.com/edgardtf1981/estimulus-site/issues"
+  },
+  "homepage": "https://github.com/edgardtf1981/estimulus-site#readme",
+  "keywords": [
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "estimulus",
+    "business",
+    "consulting"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
