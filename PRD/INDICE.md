@@ -52,6 +52,13 @@ Este índice organiza toda a documentação do projeto Site Estimulus para facil
    - Marcos importantes
    - Roadmap futuro
 
+9. **[Status Atual do Projeto](./11-status-atual-projeto.md)** - Status atualizado
+   - Funcionalidades implementadas
+   - Segurança implementada
+   - Stack tecnológico atualizado
+   - Testes realizados
+   - Status do deploy
+
 ---
 
 ## 📁 Documentação Técnica Existente
