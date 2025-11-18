@@ -67,7 +67,13 @@
   "rewrites": [],
   "redirects": [
     {
-      "source": "https://estimulus.com.br/:path*",
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "estimulus.com.br"
+        }
+      ],
       "destination": "https://www.estimulus.com.br/:path*",
       "permanent": true
     }
