@@ -35,3 +35,12 @@ Obrigado por considerar contribuir com o projeto Estimulus!
 
 Todas as contribuições passam por revisão. Seja paciente e aberto a feedback construtivo.
 
+## GitHub Actions
+
+Para usar GitHub Actions, você precisa de um token com permissão `workflow`.
+
+1. Acesse: https://github.com/settings/tokens
+2. Crie um novo token (classic)
+3. Marque a permissão: **workflow**
+4. Atualize o remote com o novo token
+
