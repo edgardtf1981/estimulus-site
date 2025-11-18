@@ -20,29 +20,29 @@ function isValidEmail(email: string): boolean {
 }
 
 export async function POST(request: NextRequest) {
-  try {
-    // 🔒 Rate Limiting: Máximo 3 requisições por hora por IP
-    const clientIP = getClientIP(request)
-    const rateLimitResult = rateLimit(clientIP, 3, 60 * 60 * 1000) // 3 req/hora
-    
-    if (!rateLimitResult.allowed) {
-      return NextResponse.json(
-        { 
-          success: false, 
-          message: 'Muitas requisições. Tente novamente mais tarde.',
-          error: 'RATE_LIMIT_EXCEEDED'
-        },
-        { 
-          status: 429,
-          headers: {
-            'X-RateLimit-Remaining': '0',
-            'X-RateLimit-Reset': new Date(rateLimitResult.resetTime).toISOString(),
-            'Retry-After': String(Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000)),
-          }
+  // 🔒 Rate Limiting: Máximo 3 requisições por hora por IP
+  const clientIP = getClientIP(request)
+  const rateLimitResult = rateLimit(clientIP, 3, 60 * 60 * 1000) // 3 req/hora
+  
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json(
+      { 
+        success: false, 
+        message: 'Muitas requisições. Tente novamente mais tarde.',
+        error: 'RATE_LIMIT_EXCEEDED'
+      },
+      { 
+        status: 429,
+        headers: {
+          'X-RateLimit-Remaining': '0',
+          'X-RateLimit-Reset': new Date(rateLimitResult.resetTime).toISOString(),
+          'Retry-After': String(Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000)),
         }
-      )
-    }
-    
+      }
+    )
+  }
+  
+  try {
     const data = await request.json()
     
     // Validação de entrada
