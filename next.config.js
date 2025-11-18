@@ -74,9 +74,9 @@ const nextConfig = {
     ];
   },
 
-  // Webpack customization
+  // Webpack customization - Simplificado para evitar quebrar o runtime
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Resolver problemas com dependências que usam 'self' no servidor
+    // Apenas configurações essenciais - sem modificar entry points ou runtime
     if (isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
@@ -84,68 +84,7 @@ const nextConfig = {
         net: false,
         tls: false,
       };
-      
-      // Injetar polyfill no início de cada chunk do servidor
-      const polyfillPath = path.resolve(__dirname, 'polyfill-server.js');
-      
-      // Adicionar como entry point adicional
-      const originalEntry = config.entry;
-      config.entry = async () => {
-        const entries = await (typeof originalEntry === 'function' ? originalEntry() : originalEntry);
-        
-        if (typeof entries === 'object' && entries !== null) {
-          // Adicionar polyfill a todos os entry points
-          for (const key in entries) {
-            if (Array.isArray(entries[key])) {
-              entries[key].unshift(polyfillPath);
-            } else if (typeof entries[key] === 'string') {
-              entries[key] = [polyfillPath, entries[key]];
-            }
-          }
-        }
-        
-        return entries;
-      };
     }
-
-    // Para servidor: usar plugin customizado para substituir self por globalThis
-    if (isServer) {
-      // Plugin customizado para substituir self por globalThis no código gerado
-      const SelfPolyfillPlugin = require('./scripts/webpack-polyfill-plugin');
-      config.plugins.push(new SelfPolyfillPlugin());
-    }
-
-    // Definir variáveis globais para compatibilidade
-    config.plugins.push(
-      new webpack.DefinePlugin({
-        'typeof self': JSON.stringify(isServer ? 'object' : 'object'),
-        'typeof window': JSON.stringify(isServer ? 'undefined' : 'object'),
-      })
-    );
-
-    // Otimizações de bundle
-    config.optimization.splitChunks = {
-      chunks: 'all',
-      cacheGroups: {
-        default: false,
-        vendors: false,
-        vendor: {
-          name: 'vendor',
-          chunks: 'all',
-          test: /[\\/]node_modules[\\/]/,
-          priority: 20,
-          reuseExistingChunk: true,
-        },
-        common: {
-          name: 'common',
-          minChunks: 2,
-          chunks: 'all',
-          priority: 10,
-          reuseExistingChunk: true,
-          enforce: true,
-        },
-      },
-    };
 
     // Aliases para reduzir tamanho do bundle
     config.resolve.alias = {
