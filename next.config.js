@@ -108,15 +108,8 @@ const nextConfig = {
       };
     }
 
-    // Para servidor: injetar self via ProvidePlugin ANTES de tudo
+    // Para servidor: usar plugin customizado para substituir self por globalThis
     if (isServer) {
-      // ProvidePlugin injeta automaticamente 'self' quando usado no código
-      config.plugins.push(
-        new webpack.ProvidePlugin({
-          'self': 'globalThis',
-        })
-      );
-      
       // Plugin customizado para substituir self por globalThis no código gerado
       const SelfPolyfillPlugin = require('./scripts/webpack-polyfill-plugin');
       config.plugins.push(new SelfPolyfillPlugin());
