@@ -32,7 +32,7 @@ if ($pushResult -match "Repository not found") {
     Write-Host "`n⚠️  Repositório não encontrado no GitHub" -ForegroundColor Yellow
     Write-Host "`n📝 Você precisa criar o repositório primeiro:" -ForegroundColor Cyan
     Write-Host "1. Acesse: https://github.com/new" -ForegroundColor White
-    Write-Host "2. Nome: estimulus-site" -ForegroundColor White
+    Write-Host "2. Nome: estimulus-site-novo" -ForegroundColor White
     Write-Host "3. Escolha: Público ou Privado" -ForegroundColor White
     Write-Host "4. NÃO marque 'Initialize with README'" -ForegroundColor White
     Write-Host "5. Clique em 'Create repository'" -ForegroundColor White

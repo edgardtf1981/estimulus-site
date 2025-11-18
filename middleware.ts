@@ -4,6 +4,25 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const start = Date.now();
   
+  // 🔒 PROTEÇÃO: Bloquear acesso à área administrativa sem autenticação
+  if (request.nextUrl.pathname.startsWith('/admin')) {
+    // Verificar se há token de autenticação (implementação básica)
+    // Em produção, usar NextAuth.js ou sistema de autenticação robusto
+    const authHeader = request.headers.get('authorization');
+    const adminToken = request.cookies.get('admin-token');
+    
+    // Se não houver autenticação, redirecionar para home
+    // NOTA: Esta é uma proteção básica. Implementar autenticação adequada antes de produção
+    if (!authHeader && !adminToken && process.env.NODE_ENV === 'production') {
+      return NextResponse.redirect(new URL('/', request.url));
+    }
+    
+    // Em desenvolvimento, permitir acesso mas logar aviso
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('⚠️ ACESSO À ÁREA ADMIN SEM AUTENTICAÇÃO - Implementar autenticação antes de produção!');
+    }
+  }
+  
   // Headers de performance
   const response = NextResponse.next();
   

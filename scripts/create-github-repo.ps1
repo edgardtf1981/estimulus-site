@@ -5,7 +5,7 @@ param(
     [Parameter(Mandatory=$true)]
     [string]$GitHubToken,
     
-    [string]$RepoName = "estimulus-site",
+    [string]$RepoName = "estimulus-site-novo",
     [string]$Description = "Site institucional da Estimulus",
     [bool]$Private = $true
 )

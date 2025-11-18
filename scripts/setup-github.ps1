@@ -3,7 +3,7 @@
 
 param(
     [string]$Username = "edgardtf",
-    [string]$RepoName = "estimulus-site"
+    [string]$RepoName = "estimulus-site-novo"
 )
 
 Write-Host "🔧 Configurando remote do GitHub..." -ForegroundColor Cyan

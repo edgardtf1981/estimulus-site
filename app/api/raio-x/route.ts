@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import { rateLimit, getClientIP } from '@/lib/rate-limit'
 
 // Função para sanitizar strings e prevenir XSS
 function sanitizeString(str: string): string {
@@ -20,6 +21,28 @@ function isValidEmail(email: string): boolean {
 
 export async function POST(request: NextRequest) {
   try {
+    // 🔒 Rate Limiting: Máximo 3 requisições por hora por IP
+    const clientIP = getClientIP(request)
+    const rateLimitResult = rateLimit(clientIP, 3, 60 * 60 * 1000) // 3 req/hora
+    
+    if (!rateLimitResult.allowed) {
+      return NextResponse.json(
+        { 
+          success: false, 
+          message: 'Muitas requisições. Tente novamente mais tarde.',
+          error: 'RATE_LIMIT_EXCEEDED'
+        },
+        { 
+          status: 429,
+          headers: {
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': new Date(rateLimitResult.resetTime).toISOString(),
+            'Retry-After': String(Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000)),
+          }
+        }
+      )
+    }
+    
     const data = await request.json()
     
     // Validação de entrada
@@ -189,15 +212,30 @@ RESPOSTAS DO QUESTIONÁRIO
       `,
     })
 
-    console.log('Email enviado:', info.messageId)
+    // Log seguro (não expor dados sensíveis)
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Email enviado:', info.messageId)
+    }
 
     return NextResponse.json({ 
       success: true, 
       message: 'Raio-X enviado com sucesso' 
+    }, {
+      headers: {
+        'X-RateLimit-Remaining': String(rateLimitResult.remaining),
+        'X-RateLimit-Reset': new Date(rateLimitResult.resetTime).toISOString(),
+      }
     })
 
   } catch (error) {
-    console.error('Erro ao processar Raio-X:', error)
+    // Log seguro (não expor stack traces ou dados sensíveis em produção)
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Erro ao processar Raio-X:', error)
+    } else {
+      // Em produção, log apenas informações seguras
+      console.error('Erro ao processar Raio-X: [erro interno]')
+    }
+    
     return NextResponse.json(
       { success: false, message: 'Erro ao enviar Raio-X' },
       { status: 500 }
