@@ -1,8 +1,8 @@
 // Script de inicialização para Vercel - define self antes de tudo
-// Este arquivo deve ser executado antes do build do Next.js
-// Adicione no package.json: "vercel-build": "node vercel-build-fix.js && next build"
+// Este arquivo é executado pelo Vercel antes do build
+// O Vercel executa: npm run vercel-build && next build
 
-// Definir self no nível mais alto possível
+// Definir self no nível mais alto possível ANTES do webpack processar
 if (typeof global !== 'undefined') {
   if (typeof global.self === 'undefined') {
     global.self = global;
@@ -15,7 +15,14 @@ if (typeof globalThis !== 'undefined') {
   }
 }
 
-// Executar o build do Next.js
-const { execSync } = require('child_process');
-execSync('next build', { stdio: 'inherit' });
+// Garantir que self existe no escopo global
+if (typeof self === 'undefined') {
+  if (typeof global !== 'undefined') {
+    global.self = global;
+  } else if (typeof globalThis !== 'undefined') {
+    globalThis.self = globalThis;
+  }
+}
+
+// O Vercel executará 'next build' automaticamente após este script
 

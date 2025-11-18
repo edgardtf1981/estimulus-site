@@ -25,7 +25,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "vercel-build": "node vercel-build-fix.js",
+    "vercel-build": "node vercel-build-fix.js && next build",
     "start": "next start",
     "lint": "next lint",
     "precheck": "node scripts/precheck.js",
