@@ -65,7 +65,13 @@
     }
   ],
   "rewrites": [],
-  "redirects": [],
+  "redirects": [
+    {
+      "source": "https://estimulus.com.br/:path*",
+      "destination": "https://www.estimulus.com.br/:path*",
+      "permanent": true
+    }
+  ],
   "cleanUrls": true,
   "trailingSlash": false
 }
