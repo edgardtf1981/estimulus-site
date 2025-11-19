@@ -9,7 +9,8 @@ import {
   ChartBarIcon,
   RocketLaunchIcon,
   StarIcon,
-  ChevronDownIcon
+  ChevronDownIcon,
+  PhotoIcon
 } from '@heroicons/react/24/outline'
 import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid'
 import Logo from '@/components/Logo'
@@ -40,24 +41,21 @@ const features = [
     icon: ClockIcon,
     title: 'Engenharia de Pontos',
     description: 'Cálculo preciso do fluxo financeiro e sistema de recompensas'
+  },
+  {
+    icon: PhotoIcon,
+    title: 'Criação Visual Pacote com 6 imagens',
+    description: 'Pacote com 6 imagens para iniciar o programa de fidelidade'
   }
-]
-
-const benefits = [
-  'Resultados em 30 dias',
-  'Metodologia comprovada',
-  'Suporte direto com especialistas',
-  'Plano de ação executável',
-  'ROI garantido'
 ]
 
 const testimonials = [
   {
-    name: 'Roberto Lima',
-    role: 'CEO - Health Clinic',
-    text: 'A mentoria da Estimulus transformou nossa abordagem de fidelização. Em 60 dias já vimos resultados concretos.',
+    name: 'Luciana Martins',
+    role: 'Bella Velut - Beauty Clinic',
+    text: 'A mentoria me ajudou a encontrar o melhor caminho para montar um programa de fidelização. Em 1 semana consegui resolver minhas dúvidas.',
     rating: 5,
-    result: '+3x frequência de retorno'
+    result: '+45% frequência de retorno'
   },
   {
     name: 'Patricia Alves',
@@ -71,7 +69,7 @@ const testimonials = [
 const faqs = [
   {
     question: 'Quanto tempo dura a mentoria?',
-    answer: 'A mentoria estratégica inclui 3 sessões principais (2 de diagnóstico e estrutura + 1 de implementação), além do treinamento na ferramenta. O processo completo leva em média 4-6 semanas.'
+    answer: 'A mentoria estratégica inclui 3 sessões (diagnóstico, estruturação, implementação). O tempo de execução depende da complexidade do projeto.'
   },
   {
     question: 'Preciso ter conhecimento técnico?',
@@ -79,11 +77,11 @@ const faqs = [
   },
   {
     question: 'Posso aplicar em qualquer tipo de negócio?',
-    answer: 'Sim! A metodologia é adaptável para varejo, serviços, e-commerce e qualquer segmento que trabalhe com clientes recorrentes.'
+    answer: 'Sim! A metodologia é adaptável para diversos segmentos e objetivos, criamos programas para B2C, B2B, B2E, treinamentos, gamificação, entre outros.'
   },
   {
-    question: 'Há garantia de resultados?',
-    answer: 'Sim, oferecemos 10 dias de suporte gratuito após a conclusão da mentoria. Além disso, nossa metodologia é baseada em cases reais com resultados comprovados.'
+    question: 'Há cases de sucesso?',
+    answer: 'Sim, nossa metodologia é baseada em cases reais com resultados comprovados. Já atendemos mais de 6.000 empresas de diferentes segmentos.'
   }
 ]
 
@@ -137,17 +135,14 @@ export default function MentoriaEstrategicaPage() {
               </h1>
 
               <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                Transforme seu negócio com uma estratégia de fidelização personalizada. 
-                <span className="font-semibold text-[#2A3B95]"> Resultados em 30 dias.</span>
+                Estratégias de fidelização personalizadas em até 48 horas.
               </p>
 
               {/* Price */}
               <div className="mb-8">
                 <div className="inline-flex items-baseline gap-2">
                   <span className="text-5xl font-black text-[#2A3B95]">R$ 1.490</span>
-                  <span className="text-lg text-gray-500">único</span>
                 </div>
-                <p className="text-sm text-gray-500 mt-2">10 dias de suporte gratuito</p>
               </div>
 
               {/* CTA Principal */}
@@ -175,11 +170,11 @@ export default function MentoriaEstrategicaPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircleIcon className="w-5 h-5 text-green-500" />
-                  <span>Resultados garantidos</span>
+                  <span>Cases de Sucesso</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircleIcon className="w-5 h-5 text-green-500" />
-                  <span>Suporte especializado</span>
+                  <span>Suporte de implantação</span>
                 </div>
               </div>
             </div>
@@ -192,7 +187,7 @@ export default function MentoriaEstrategicaPage() {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-                  O que você vai <span className="text-[#2A3B95]">conquistar</span>
+                  O seu melhor <span className="text-[#2A3B95]">investimento</span>
                 </h2>
                 <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                   Uma estratégia completa de fidelização pronta para implementar
@@ -221,20 +216,6 @@ export default function MentoriaEstrategicaPage() {
                 ))}
               </div>
 
-              {/* Benefits List */}
-              <div className="mt-16 bg-white rounded-2xl p-8 shadow-lg border-2 border-[#E8EBF5]">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                  Benefícios Exclusivos
-                </h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {benefits.map((benefit, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <CheckCircleIcon className="w-6 h-6 text-[#2A3B95] flex-shrink-0" />
-                      <span className="text-lg text-gray-700">{benefit}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -399,7 +380,7 @@ export default function MentoriaEstrategicaPage() {
                 Pronto para transformar seu negócio?
               </h2>
               <p className="text-xl text-white/90 mb-8">
-                Comece sua jornada de fidelização hoje mesmo. Resultados em 30 dias.
+                Comece sua jornada de fidelização hoje mesmo. Economize tempo e aprenda com quem tem experiência.
               </p>
               <a
                 href="https://wa.me/5511994051155?text=Olá! Gostaria de saber mais sobre a Mentoria Estratégica"
@@ -410,9 +391,6 @@ export default function MentoriaEstrategicaPage() {
                 Falar com Especialista
                 <ArrowRightIcon className="w-5 h-5" />
               </a>
-              <p className="text-white/70 mt-6 text-sm">
-                Ou ligue: <a href="tel:+5511994051155" className="underline">(11) 99405-1155</a>
-              </p>
             </div>
           </div>
         </section>

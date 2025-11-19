@@ -12,7 +12,8 @@ import {
   UserGroupIcon,
   StarIcon,
   ChevronDownIcon,
-  BoltIcon
+  BoltIcon,
+  MegaphoneIcon
 } from '@heroicons/react/24/outline'
 import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid'
 import Logo from '@/components/Logo'
@@ -74,38 +75,44 @@ const features = [
     icon: UserGroupIcon,
     title: 'Gerenciamento Mensal',
     description: 'Acompanhamento contínuo e otimização constante'
+  },
+  {
+    icon: MegaphoneIcon,
+    title: 'Campanhas Personalizadas',
+    description: 'Criamos campanhas personalizadas de acordo com contexto e sazonalidade.'
   }
 ]
 
 const benefits = [
-  'Aumento de até 300% na receita recorrente',
+  'Aumento de até 150% na receita recorrente',
   'Redução de até 50% no CAC',
   'Taxa de retenção acima de 90%',
   'ROI positivo em menos de 3 meses',
-  'Suporte dedicado mensal'
+  'Suporte dedicado mensal',
+  'Relatórios de resultados'
 ]
 
 const testimonials = [
   {
-    name: 'Roberto Lima',
-    role: 'CEO - Health Clinic',
-    text: 'Com a metodologia FINX 360, conseguimos aumentar a frequência de retorno dos pacientes em 3x. O investimento se pagou em menos de 2 meses. Recomendo!',
+    name: 'Dr Alex Martinelli',
+    role: 'Clinica Martinelli',
+    text: 'Com essa metodologia, conseguimos organizar o processo e aumentar a frequência de retorno dos pacientes pelo menos em 50%. O investimento se pagou em menos de 2 meses.',
     rating: 5,
-    result: '+3x frequência',
+    result: '+50% frequência',
     badge: 'SERVIÇOS'
   },
   {
-    name: 'Patricia Alves',
-    role: 'Diretora de Marketing - Fashion Store',
+    name: 'Alysson Alves',
+    role: 'Mercatto Sorvetes',
     text: 'O programa FINX 360 transformou nosso negócio. Aumentamos a retenção em 78% e o ticket médio em 42%. Resultados que superaram todas as expectativas!',
     rating: 5,
     result: '+78% retenção',
     badge: 'VAREJO'
   },
   {
-    name: 'Juliana Ferreira',
-    role: 'Proprietária - Gourmet Restaurant',
-    text: 'O sistema completo da Estimulus fez nossos clientes voltarem toda semana. Faturamento aumentou 85% em um ano. Equipe extremamente profissional!',
+    name: 'Regina Sui',
+    role: 'Nui Sushi',
+    text: 'O formato criado pela Estimulus fez nossos clientes voltarem mais. Nosso faturamento aumentou 85% em um ano. Estratégia muito inteligente!',
     rating: 5,
     result: '+85% faturamento',
     badge: 'SERVIÇOS'
@@ -127,7 +134,7 @@ const faqs = [
   },
   {
     question: 'Há garantia de resultados?',
-    answer: 'Sim, oferecemos 30 dias de garantia. Além disso, nossa metodologia FINX 360 é baseada em cases reais com resultados comprovados de aumento de receita recorrente em até 300%.'
+    answer: 'Sim, oferecemos garantia com as ações de estratégias todas implementadas em até 90 dias. Além disso, nossa metodologia FINX 360 é baseada em cases reais com resultados comprovados de aumento de receita.'
   },
   {
     question: 'O investimento é mensal?',
@@ -169,7 +176,7 @@ export default function Finx360Page() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F3E8FF] border border-[#E9D5FF] mb-6">
                 <BoltIcon className="w-5 h-5 text-[#5D2C9D]" />
-                <span className="text-sm font-semibold text-[#5D2C9D]">Ideal para empresas em crescimento</span>
+                <span className="text-sm font-semibold text-[#5D2C9D]">Terceirize o seu marketing</span>
               </div>
 
               {/* Headline */}
@@ -187,7 +194,7 @@ export default function Finx360Page() {
               <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
                 A solução completa de fidelização que combina 
                 <span className="font-semibold text-[#5D2C9D]"> Fidelização, IA + Dados, Neuromarketing e Experiência da Marca</span> 
-                {' '}para aumentar sua receita recorrente em até <span className="font-black text-[#2A3B95]">300%</span>.
+                {' '}para aumentar suas vendas.
               </p>
 
               {/* Price */}
@@ -196,7 +203,7 @@ export default function Finx360Page() {
                   <span className="text-5xl font-black text-[#5D2C9D]">R$ 4.900</span>
                   <span className="text-lg text-gray-500">/mês</span>
                 </div>
-                <p className="text-sm text-gray-500 mt-2">30 dias de garantia • Sem taxa de setup</p>
+                <p className="text-sm text-gray-500 mt-2">Sem taxa de setup - Agenda exclusiva</p>
               </div>
 
               {/* CTA Principal */}
@@ -208,19 +215,13 @@ export default function Finx360Page() {
                   Começar Agora
                   <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
-                <a
-                  href="#pilares"
-                  className="px-10 py-5 border-2 border-[#5D2C9D] text-[#5D2C9D] font-bold text-lg rounded-xl hover:bg-[#5D2C9D] hover:text-white transition-all duration-300"
-                >
-                  Ver Metodologia
-                </a>
               </div>
 
               {/* Trust Badges */}
               <div className="mt-12 flex flex-wrap justify-center gap-6 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
                   <CheckCircleIcon className="w-5 h-5 text-green-500" />
-                  <span>+300% receita recorrente</span>
+                  <span>+30% aumento de receita</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircleIcon className="w-5 h-5 text-green-500" />
@@ -346,7 +347,7 @@ export default function Finx360Page() {
                   Cases de <span className="text-[#5D2C9D]">Sucesso</span>
                 </h2>
                 <p className="text-xl text-gray-600">
-                  Empresas que transformaram seus negócios com FINX 360
+                  Empresas que transformaram seus negócios com a metodologia FINX 360
                 </p>
               </div>
 
@@ -454,9 +455,6 @@ export default function Finx360Page() {
                 Falar com Especialista
                 <ArrowRightIcon className="w-5 h-5" />
               </a>
-              <p className="text-white/70 mt-6 text-sm">
-                Ou ligue: <a href="tel:+5511994051155" className="underline">(11) 99405-1155</a>
-              </p>
             </div>
           </div>
         </section>

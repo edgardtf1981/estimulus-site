@@ -513,9 +513,6 @@ export default function CriacaoPage() {
                 Solicitar Orçamento
                 <ArrowRightIcon className="w-5 h-5" />
               </a>
-              <p className="text-white/70 mt-6 text-sm">
-                Ou ligue: <a href="tel:+5511994051155" className="underline">(11) 99405-1155</a>
-              </p>
             </div>
           </div>
         </section>

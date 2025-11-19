@@ -92,7 +92,8 @@ const benefits = [
   'Metodologia comprovada em centenas de casos',
   'Aplicação prática imediata',
   'Economia de milhares em consultorias',
-  'Desenvolvimento profissional contínuo'
+  'Desenvolvimento profissional contínuo',
+  'Cases de mercado'
 ]
 
 const testimonials = [
@@ -194,14 +195,13 @@ export default function CursosPage() {
                     backgroundImage: 'linear-gradient(135deg, #008C9E, #2A3B95, #5D2C9D)'
                   }}
                 >
-                  Cursos de Fidelização
+                  Cursos de Marketing de Fidelização
                 </span>
               </h1>
 
               <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Aprenda as estratégias e metodologias que aumentam receita recorrente em até 
-                <span className="font-semibold text-[#008C9E]"> 300%</span>. 
-                {' '}Conhecimento prático com <span className="font-black text-[#2A3B95]">acesso vitalício</span>.
+                Aprenda as estratégias de marketing e metodologias que aumentam o engajamento do cliente com a marca. 
+                {' '}Conhecimento prático com <span className="font-black text-[#2A3B95]">acesso a diversos materiais de apoio</span>.
               </p>
 
               {/* Price */}
@@ -209,7 +209,7 @@ export default function CursosPage() {
                 <div className="inline-flex items-baseline gap-2">
                   <span className="text-5xl font-black text-[#008C9E]">A partir de R$ 490</span>
                 </div>
-                <p className="text-sm text-gray-500 mt-2">Acesso imediato • Acesso vitalício</p>
+                <p className="text-sm text-gray-500 mt-2">Acesso imediato • Consulte os temas</p>
               </div>
 
               {/* CTA Principal */}
@@ -233,7 +233,7 @@ export default function CursosPage() {
               <div className="mt-12 flex flex-wrap justify-center gap-6 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
                   <CheckCircleIcon className="w-5 h-5 text-green-500" />
-                  <span>Acesso vitalício</span>
+                  <span>Acesso a materiais de apoio</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircleIcon className="w-5 h-5 text-green-500" />
@@ -469,9 +469,6 @@ export default function CursosPage() {
                 Falar com Especialista
                 <ArrowRightIcon className="w-5 h-5" />
               </a>
-              <p className="text-white/70 mt-6 text-sm">
-                Ou ligue: <a href="tel:+5511994051155" className="underline">(11) 99405-1155</a>
-              </p>
             </div>
           </div>
         </section>
