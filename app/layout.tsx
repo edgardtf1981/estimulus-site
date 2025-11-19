@@ -35,6 +35,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://estimulus.com.br',
   },
+  // Favicon detectado automaticamente pelo Next.js 13+ (app/icon.png)
 };
 
 const organizationSchema = {

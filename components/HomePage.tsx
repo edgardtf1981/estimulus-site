@@ -222,7 +222,7 @@ const ofertas = [
     trial: '10 dias de suporte gratuito',
     preco: 'R$ 1.490',
     cta: 'Começar Agora',
-    link: '/mentorias',
+    link: '/mentoria-estrategica',
     targetAudience: 'Ideal para projetos rápidos',
     features: [
       '2 sessões (diagnóstico e estrutura)',
@@ -270,7 +270,7 @@ const ofertas = [
     trial: 'Orçamento personalizado',
     preco: 'Sob consulta',
     cta: 'Pedir Orçamento',
-    link: '/contato',
+    link: '/criacao',
     targetAudience: 'Ideal para projetos customizados',
     features: [
       'Material gráfico',
@@ -441,6 +441,8 @@ const heroWords = ['Melhora Resultados', 'Aumenta as Vendas', 'Traz o Cliente de
 
 export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [enviandoEmail, setEnviandoEmail] = useState(false)
+  const [mensagemSucesso, setMensagemSucesso] = useState('')
   const [showBackToTop, setShowBackToTop] = useState(false)
 
   // Back-to-top button visibility
@@ -1947,8 +1949,43 @@ export default function HomePage() {
                     const form = e.currentTarget
                     const emailInput = form.querySelector('input[type="email"]') as HTMLInputElement
                     if (emailInput && emailInput.value) {
-                      // Redireciona para a seção de contato ou envia email
-                      window.location.href = '#contato'
+                      const handleSubmit = async () => {
+                        setEnviandoEmail(true)
+                        setMensagemSucesso('')
+                        
+                        try {
+                          const response = await fetch('/api/contato', {
+                            method: 'POST',
+                            headers: {
+                              'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                              email: emailInput.value,
+                              origem: 'Formulário Principal - Hero Section'
+                            }),
+                          })
+                          
+                          const data = await response.json()
+                          
+                          if (data.success) {
+                            setMensagemSucesso('Email enviado com sucesso! Entraremos em contato em breve.')
+                            emailInput.value = ''
+                            // Scroll suave para a seção de contato
+                            setTimeout(() => {
+                              document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })
+                            }, 500)
+                          } else {
+                            setMensagemSucesso('Erro ao enviar. Tente novamente.')
+                          }
+                        } catch (error) {
+                          console.error('Erro ao enviar email:', error)
+                          setMensagemSucesso('Erro ao enviar. Tente novamente.')
+                        } finally {
+                          setEnviandoEmail(false)
+                          setTimeout(() => setMensagemSucesso(''), 5000)
+                        }
+                      }
+                      handleSubmit()
                     }
                   }}
                 >
@@ -1958,21 +1995,28 @@ export default function HomePage() {
                     name="contact-email"
                     placeholder="Digite seu email..."
                     required
+                    disabled={enviandoEmail}
                     aria-label="Email para contato"
                     aria-required="true"
-                    className="flex-1 px-4 py-3 rounded-lg border border-white/30 bg-white/10 backdrop-blur-sm text-white placeholder:text-white/70 typography-body-small focus:border-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all shadow-md"
+                    className="flex-1 px-4 py-3 rounded-lg border border-white/30 bg-white/10 backdrop-blur-sm text-white placeholder:text-white/70 typography-body-small focus:border-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all shadow-md disabled:opacity-50"
                   />
                   
                   {/* Botão Get Started */}
                   <button
                     type="submit"
+                    disabled={enviandoEmail}
                     aria-label="Começar agora - Ir para contato"
-                    className="group px-6 py-3 rounded-lg bg-white text-[#2A3B95] font-bold typography-body-small hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg whitespace-nowrap flex items-center gap-2"
+                    className="group px-6 py-3 rounded-lg bg-white text-[#2A3B95] font-bold typography-body-small hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg whitespace-nowrap flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Começar Agora
-                    <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    {enviandoEmail ? 'Enviando...' : 'Começar Agora'}
+                    {!enviandoEmail && <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />}
                   </button>
                 </form>
+                {mensagemSucesso && (
+                  <p className={`mt-3 text-sm ${mensagemSucesso.includes('sucesso') ? 'text-green-300' : 'text-red-300'}`}>
+                    {mensagemSucesso}
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -2071,9 +2115,33 @@ export default function HomePage() {
                   const form = e.currentTarget
                   const emailInput = form.querySelector('input[type="email"]') as HTMLInputElement
                   if (emailInput && emailInput.value) {
-                    // Aqui você pode adicionar lógica para enviar o email
-                    alert('Obrigado por se inscrever! Em breve você receberá nossos conteúdos exclusivos.')
-                    emailInput.value = ''
+                    const handleSubmit = async () => {
+                      try {
+                        const response = await fetch('/api/contato', {
+                          method: 'POST',
+                          headers: {
+                            'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify({
+                            email: emailInput.value,
+                            origem: 'Newsletter - Footer'
+                          }),
+                        })
+                        
+                        const data = await response.json()
+                        
+                        if (data.success) {
+                          alert('Obrigado por se inscrever! Em breve você receberá nossos conteúdos exclusivos.')
+                          emailInput.value = ''
+                        } else {
+                          alert('Erro ao se inscrever. Tente novamente.')
+                        }
+                      } catch (error) {
+                        console.error('Erro ao enviar email:', error)
+                        alert('Erro ao se inscrever. Tente novamente.')
+                      }
+                    }
+                    handleSubmit()
                   }
                 }}
               >

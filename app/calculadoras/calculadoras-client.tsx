@@ -214,18 +214,31 @@ export default function CalculadorasClient() {
     }
 
     try {
-      console.log('Enviando email para:', email)
-      console.log('Calculadora:', calc.titulo)
-      console.log('Resultado:', resultado)
+      // Enviar notificação para os emails da Estimulus
+      const response = await fetch('/api/contato', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          origem: `Calculadora ${calc.titulo} - Solicitação de Resultado`,
+          mensagem: `O usuário solicitou o envio do resultado da calculadora ${calc.titulo}.\n\nResultado: ${resultado}\n\nCalculadora: ${calc.subtitulo || calc.titulo}`
+        }),
+      })
       
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      const data = await response.json()
       
-      setEmailEnviado(prev => ({
-        ...prev,
-        [calc.id]: true
-      }))
-      
-      alert('Email enviado com sucesso! Você receberá o resultado, material completo e artigo sobre como a Estimulus pode ajudar.')
+      if (data.success) {
+        setEmailEnviado(prev => ({
+          ...prev,
+          [calc.id]: true
+        }))
+        
+        alert('Email enviado com sucesso! Você receberá o resultado, material completo e artigo sobre como a Estimulus pode ajudar.')
+      } else {
+        alert('Erro ao enviar. Tente novamente.')
+      }
     } catch (error) {
       alert('Erro ao enviar email. Tente novamente.')
     }
